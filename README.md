@@ -102,6 +102,7 @@ Un EPUB è un archivio ZIP di pagine XHTML, immagini e un file di descrizione (O
 - **Pulizia del codice:** toglie span inutili, tratti di formattazione spezzati, paragrafi vuoti, a capo doppi, commenti e attributi vuoti
 - **Controllo dei metadati:** legge il libro e propone correzioni a titolo, autori, lingua e serie (nomi di file usati come titolo, maiuscolo, «Cognome, Nome», più autori nello stesso campo, lingua rilevata dal testo); scegli tu cosa applicare
 - **Note a piè di pagina:** controlla i riferimenti, aggiunge i link di ritorno, rinumera le note, toglie i collegamenti rotti e crea note a comparsa per i lettori EPUB 3
+- **Aggiornamenti:** quando pubblichi una nuova versione, l'app mostra un avviso "Aggiorna" senza dover ricaricare più volte.
 
 **Interfaccia**
 - **Italiano e inglese:** al primo avvio propone la lingua del dispositivo; si cambia in ogni momento con i pulsanti IT / EN
@@ -186,6 +187,7 @@ An EPUB is a ZIP archive of XHTML pages, images and a description file (OPF). Co
 - **Code cleanup:** removes useless spans, split formatting runs, empty paragraphs, double line breaks, comments and empty attributes
 - **Metadata check:** reads the book and suggests fixes for title, authors, language and series (file names used as titles, all caps, “Surname, Name”, several authors in one field, language detected from the text); you choose what to apply
 - **Footnotes:** checks references, adds links back, renumbers notes, removes broken links and creates pop-up notes for EPUB 3 readers
+- **Updates:** when a new version is published, the app shows an "Update" notice, so no repeated reloads are needed.
 
 **Interface**
 - **Italian and English:** on first launch it proposes your device's language; switch at any time with the IT / EN buttons
@@ -216,4 +218,6 @@ A static site: no build step, no backend. / Un sito statico: nessuna compilazion
 | `icon.svg`, `icon-192.png`, `icon-512.png` | Icons / Icone |
 | `hunspell.bundle.js`, `dict/` | Spell checker engine and dictionaries / Motore e dizionari del correttore |
 
-**Libraries / Librerie:** [JSZip](https://stuk.github.io/jszip/) (read and write EPUB archives), [hunspell-asm](https://github.com/kwonoj/hunspell-asm) (MIT), Italian dictionary from [wooorm/dictionaries](https://github.com/wooorm/dictionaries) (GPL-3.0) and English dictionary (MIT and BSD). Icons: [Material Symbols](https://fonts.google.com/icons) by Google (Apache 2.0). License texts are in `dict/`.
+**Libraries / Librerie:** [JSZip](https://stuk.github.io/jszip/) (read and write EPUB archives), [hunspell-asm](https://github.com/kwonoj/hunspell-asm) (MIT), Italian dictionary from [wooorm/dictionaries](https://github.com/wooorm/dictionaries) (GPL-3.0) and English dictionary (MIT and BSD). Font: [Roboto Flex](https://github.com/googlefonts/roboto-flex) (SIL OFL 1.1). Icons: [Material Symbols](https://fonts.google.com/icons) by Google (Apache 2.0). License texts are in `dict/` and `fonts/`.
+
+**Privacy:** Colophon works on your device; books are never uploaded. See / Vedi [PRIVACY.md](PRIVACY.md).
