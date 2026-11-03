@@ -273,6 +273,15 @@ label.btn:not(.ghost){color:var(--md-on-primary)}
 /* --- finestre di dialogo --- */
 .ob{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:rgba(0,0,0,.42);padding:16px}
 .ob[hidden]{display:none}
+.arep .sprow{border-left:6px solid var(--md-outline-variant)}
+.arep .a-err{border-left-color:var(--md-error)}
+.arep .a-warn{border-left-color:var(--md-tertiary)}
+.arep .a-info{border-left-color:var(--md-primary)}
+.arep .sprow strong{display:block}
+.arep .tag{display:inline-block;font-size:.6875rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:8px;padding:2px 8px;margin-right:8px;background:var(--md-sc-high)}
+.arep .a-err .tag{background:var(--md-error-container);color:var(--md-on-error-container)}
+.arep .a-warn .tag{background:var(--md-tertiary-container);color:var(--md-on-tertiary-container)}
+.arep .ex{margin:4px 0 0;overflow-wrap:anywhere}
 .foot{max-width:760px;margin:0 auto;padding:4px 14px calc(110px + env(safe-area-inset-bottom,0px));text-align:center;font-size:.8125rem;color:var(--md-on-surface-variant)}
 .foot button{all:unset;cursor:pointer;color:var(--md-primary);text-decoration:underline;padding:6px 4px}
 .foot button:focus-visible{outline:2px solid var(--md-primary);outline-offset:2px;border-radius:4px}
@@ -482,7 +491,8 @@ label.btn:not(.ghost){color:var(--md-on-primary)}
       <label class="check sw-row"><input class="sw" type="checkbox" id="a-lang"> Imposta la lingua del libro in ogni pagina</label>
       <label class="check sw-row"><input class="sw" type="checkbox" id="a-meta"> Aggiungi i metadati di accessibilità (aggiorna anche a EPUB 3)</label>
       <div class="small" style="margin-top:8px">I metadati dichiarano ciò che l'app riconosce nel libro: testo, immagini, indice e ordine di lettura.</div>
-      <div class="actions"><button data-i="image_search" class="btn ghost" id="a-alt" type="button">Cerca le immagini senza descrizione</button></div>
+      <div class="actions"><button data-i="check" class="btn" id="a-chk" type="button">Controlla l'accessibilità del libro</button><button data-i="image_search" class="btn ghost" id="a-alt" type="button">Cerca le immagini senza descrizione</button></div>
+      <div class="arep" id="a-rep" aria-live="polite"></div>
       <div class="small" id="a-out" style="margin-top:8px"></div>
       <div id="a-list"></div>
     </details>
@@ -630,7 +640,7 @@ label.btn:not(.ghost){color:var(--md-on-primary)}
     if (persist) { try { localStorage.setItem(LKEY, l); } catch (e) {} }
     applyLang();
     if (!initial) {
-      ["report", "stats", "r-out", "sp-out", "results", "sp-list", "sc-out", "sc-list", "i-out", "a-out", "a-list", "hd-out", "hd-list", "td-out", "mq-out", "mq-list", "fn-out", "fn-list"].forEach(function (id) { $(id).textContent = ""; });
+      ["report", "stats", "r-out", "sp-out", "results", "sp-list", "sc-out", "sc-list", "i-out", "a-out", "a-list", "a-rep", "hd-out", "hd-list", "td-out", "mq-out", "mq-list", "fn-out", "fn-list"].forEach(function (id) { $(id).textContent = ""; });
       $("sp-bulk").style.display = "none"; say("");
       if (toc.length) renderToc();
       if (doc) epubInfo();
@@ -703,7 +713,7 @@ label.btn:not(.ghost){color:var(--md-on-primary)}
     $("drop").style.display = "none";
     $("book").style.display = "block";
     renderPreview();
-    $("a-v3").checked = false; $("a-list").innerHTML = ""; $("a-out").textContent = ""; epubInfo();
+    $("a-v3").checked = false; $("a-list").innerHTML = ""; $("a-rep").innerHTML = ""; $("a-out").textContent = ""; epubInfo();
     $("report").textContent = ""; $("stats").textContent = ""; $("r-out").textContent = ""; $("sp-list").innerHTML = ""; $("sp-out").textContent = ""; $("sp-bulk").style.display = "none";
     loadToc().then(renderToc);
     say("");
@@ -2190,6 +2200,90 @@ label.btn:not(.ghost){color:var(--md-on-primary)}
   Object.assign(EN, {
     "È disponibile una nuova versione di Colophon.": "A new version of Colophon is available.",
     "Aggiorna": "Update",
+    "1 pagina è segnata «non lineare»: i lettori la saltano nella lettura continua.": "1 page is marked \"non-linear\": readers skip it in continuous reading.",
+    "1 pagina indicata nel libro non esiste.": "1 page listed in the book does not exist.",
+    "1 pagina non dichiara la lingua.": "1 page does not declare a language.",
+    "1 immagine non ha il testo alternativo: chi usa un lettore di schermo non sa cosa mostra.": "1 image has no alternative text: screen reader users cannot tell what it shows.",
+    "1 pagina contiene solo immagini senza descrizione (tipico dei libri scansionati): per un lettore di schermo è vuota.": "1 page contains only images without description (typical of scanned books): it is empty for a screen reader.",
+    "1 pagina lunga non ha nessun titolo: è difficile spostarsi nel libro.": "1 long page has no heading at all: it is hard to navigate the book.",
+    "In 1 pagina i titoli saltano un livello (ad esempio da h1 a h3).": "In 1 page the headings skip a level (for example from h1 to h3).",
+    "1 pagina ha tabelle senza celle d'intestazione (th).": "1 page has tables without header cells (th).",
+    "In 1 pagina ci sono collegamenti vuoti.": "In 1 page there are empty links.",
+    "In 1 pagina ci sono collegamenti come «clicca qui»: fuori contesto non si capisce dove portano.": "In 1 page there are links like \"click here\": out of context it is unclear where they lead.",
+    "1 combinazione di colore testo/sfondo è sotto il rapporto 4,5:1 consigliato.": "1 text/background color combination is below the recommended 4.5:1 ratio.",
+    "Problemi: {0}, avvisi: {1}, suggerimenti: {2}, controlli superati: {3}.": "Problems: {0}, warnings: {1}, suggestions: {2}, checks passed: {3}.",
+    "Controlli superati: {0}.": "Checks passed: {0}.",
+    "Controlla l'accessibilità del libro": "Check the book's accessibility",
+    "Controllo non riuscito.": "Check failed.",
+    "Problema": "Problem",
+    "Avviso": "Warning",
+    "Suggerimento": "Suggestion",
+    "{0} problemi, {1} avvisi, {2} suggerimenti, {3} controlli superati.": "{0} problems, {1} warnings, {2} suggestions, {3} checks passed.",
+    "Nessun problema trovato.": "No problems found.",
+    "{0} controlli superati.": "{0} checks passed.",
+    "Titolo del libro mancante": "Book title missing",
+    "Il titolo è obbligatorio e lo leggono i lettori di schermo.": "The title is required and screen readers announce it.",
+    "Compilalo nella scheda dei metadati.": "Fill it in the metadata form.",
+    "Lingua del libro non indicata": "Book language not set",
+    "Senza lingua, la voce di lettura può usare la pronuncia sbagliata.": "Without a language, text-to-speech may use the wrong pronunciation.",
+    "Compilala nei metadati.": "Fill it in the metadata form.",
+    "Titolo": "Title",
+    "Lingua del libro": "Book language",
+    "Indice mancante": "Table of contents missing",
+    "Il libro non ha un indice di navigazione.": "The book has no navigation table of contents.",
+    "Aprire «Indice» e crearne uno.": "Open «Table of contents» and create one.",
+    "Indice vuoto": "Table of contents is empty",
+    "L'indice esiste ma non contiene voci.": "The table of contents exists but has no entries.",
+    "Usa la sezione «Indice» per generarlo.": "Use the «Table of contents» section to generate it.",
+    "Indice di navigazione": "Navigation table of contents",
+    "Pagine fuori dall'ordine di lettura": "Pages outside the reading order",
+    "{0} pagine sono segnate «non lineari»: i lettori le saltano nella lettura continua.": "{0} pages are marked \"non-linear\": readers skip them in continuous reading.",
+    "File mancanti nell'ordine di lettura": "Missing files in the reading order",
+    "{0} pagine indicate nel libro non esistono.": "{0} pages listed in the book do not exist.",
+    "Pagine senza lingua": "Pages without language",
+    "{0} pagine non dichiarano la lingua.": "{0} pages do not declare a language.",
+    "Attiva «Imposta la lingua del libro in ogni pagina».": "Turn on «Set the book's language on every page».",
+    "Lingua nelle pagine": "Language on pages",
+    "Immagini senza descrizione": "Images without description",
+    "{0} immagini non hanno il testo alternativo: chi usa un lettore di schermo non sa cosa mostrano.": "{0} images have no alternative text: screen reader users cannot tell what they show.",
+    "Premi «Cerca le immagini senza descrizione» qui sotto.": "Press «Find images without a description» below.",
+    "Descrizioni delle immagini": "Image descriptions",
+    "Descrizioni poco utili": "Unhelpful descriptions",
+    "Alcune descrizioni sono il nome del file («img01.jpg») e non dicono cosa c'è nell'immagine.": "Some descriptions are just the file name (\"img01.jpg\") and do not say what the image shows.",
+    "Riscrivile con parole tue.": "Rewrite them in your own words.",
+    "Descrizioni molto lunghe": "Very long descriptions",
+    "Alcune descrizioni superano i 250 caratteri: meglio una frase breve e, se serve, il dettaglio nel testo.": "Some descriptions exceed 250 characters: a short sentence is better, with details in the text if needed.",
+    "Pagine fatte solo di immagini": "Pages made only of images",
+    "{0} pagine contengono solo immagini senza descrizione (tipico dei libri scansionati): per un lettore di schermo sono vuote.": "{0} pages contain only images without description (typical of scanned books): they are empty for a screen reader.",
+    "Servono un riconoscimento del testo (OCR) o le descrizioni.": "They need text recognition (OCR) or descriptions.",
+    "Capitoli senza titoli": "Chapters without headings",
+    "{0} pagine lunghe non hanno nessun titolo: è difficile spostarsi nel libro.": "{0} long pages have no heading at all: it is hard to navigate the book.",
+    "Prova la sezione «Titoli e struttura».": "Try the «Headings and structure» section.",
+    "Titoli presenti": "Headings present",
+    "Livelli dei titoli saltati": "Skipped heading levels",
+    "In {0} pagine i titoli saltano un livello (ad esempio da h1 a h3).": "In {0} pages the headings skip a level (for example from h1 to h3).",
+    "Tabelle senza intestazioni": "Tables without headers",
+    "{0} pagine hanno tabelle senza celle d'intestazione (th).": "{0} pages have tables without header cells (th).",
+    "Le tabelle dei dati dovrebbero avere intestazioni di riga o di colonna.": "Data tables should have row or column headers.",
+    "Tabelle": "Tables",
+    "Collegamenti senza testo": "Links without text",
+    "In {0} pagine ci sono collegamenti vuoti.": "In {0} pages there are empty links.",
+    "Collegamenti generici": "Generic links",
+    "In {0} pagine ci sono collegamenti come «clicca qui»: fuori contesto non si capisce dove portano.": "In {0} pages there are links like \"click here\": out of context it is unclear where they lead.",
+    "Contrasto dei colori insufficiente": "Insufficient color contrast",
+    "{0} combinazioni di colore testo/sfondo sono sotto il rapporto 4,5:1 consigliato.": "{0} text/background color combinations are below the recommended 4.5:1 ratio.",
+    "Scurisci il testo o schiarisci lo sfondo.": "Darken the text or lighten the background.",
+    "Contrasto dei colori": "Color contrast",
+    "Testo molto piccolo": "Very small text",
+    "Alcuni testi hanno una dimensione fissa molto piccola.": "Some text has a very small fixed size.",
+    "Metadati di accessibilità non disponibili": "Accessibility metadata not available",
+    "Il libro è in EPUB 2: non può dichiarare le sue caratteristiche di accessibilità.": "The book is EPUB 2: it cannot declare its accessibility features.",
+    "Attiva «Aggiorna a EPUB 3» e i metadati di accessibilità.": "Turn on «Upgrade to EPUB 3» and the accessibility metadata.",
+    "Metadati di accessibilità incompleti": "Incomplete accessibility metadata",
+    "Mancano: {0}.": "Missing: {0}.",
+    "Attiva «Aggiungi i metadati di accessibilità».": "Turn on «Add accessibility metadata».",
+    "Manca il riepilogo di accessibilità": "Accessibility summary missing",
+    "Alcuni negozi chiedono un breve testo che descriva l'accessibilità del libro (accessibilitySummary).": "Some stores ask for a short text describing the book's accessibility (accessibilitySummary).",
     "Privacy e condizioni d'uso": "Privacy and terms of use",
     "Note a piè di pagina": "Footnotes",
     "Controlla i riferimenti alle note (numeri nel testo) e le note stesse: collegamenti che non tornano al testo, numerazione irregolare, note a comparsa.": "Checks note references (numbers in the text) and the notes themselves: links that don't lead back to the text, irregular numbering, pop-up notes.",
@@ -2464,6 +2558,165 @@ label.btn:not(.ghost){color:var(--md-on-primary)}
     return m;
   }
   function altCount() { var n = 0, m = altEdits(); for (var k in m) n += m[k].length; return n; }
+
+  // ---- Controllo di accessibilità completo ----
+  var NAMED = { black: [0, 0, 0], white: [255, 255, 255], gray: [128, 128, 128], grey: [128, 128, 128], silver: [192, 192, 192], red: [255, 0, 0], blue: [0, 0, 255], green: [0, 128, 0], yellow: [255, 255, 0], navy: [0, 0, 128], maroon: [128, 0, 0], purple: [128, 0, 128], teal: [0, 128, 128], orange: [255, 165, 0] };
+  function parseColor(v) {
+    v = (v || "").trim().toLowerCase().replace(/\s*!important$/, "");
+    var m;
+    if (NAMED[v]) return NAMED[v];
+    if ((m = v.match(/^#([0-9a-f]{3})$/))) return m[1].split("").map(function (c) { return parseInt(c + c, 16); });
+    if ((m = v.match(/^#([0-9a-f]{6})$/))) return [0, 2, 4].map(function (i) { return parseInt(m[1].substr(i, 2), 16); });
+    if ((m = v.match(/^rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)$/))) return [+m[1], +m[2], +m[3]];
+    return null;
+  }
+  function lum(c) { var a = c.map(function (x) { x /= 255; return x <= 0.03928 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4); }); return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2]; }
+  function contrast(a, b) { var x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); }
+  function declMap(txt) {
+    var o = {};
+    txt.split(";").forEach(function (d) { var k = d.indexOf(":"); if (k > 0) o[d.slice(0, k).trim().toLowerCase()] = d.slice(k + 1).trim(); });
+    return o;
+  }
+  function pairOf(o) {
+    var fg = parseColor(o.color), bgv = o["background-color"] || (o.background || "").split(/\s+/)[0], bg = parseColor(bgv);
+    return fg && bg ? { fg: fg, bg: bg, r: contrast(fg, bg) } : null;
+  }
+  function hex(c) { return "#" + c.map(function (x) { return ("0" + x.toString(16)).slice(-2); }).join(""); }
+  async function a11yAnalyze() {
+    var R = [], OKS = [], dp = new DOMParser();
+    function add(level, title, detail, files, fix) { R.push({ level: level, title: title, detail: detail, files: files || [], fix: fix || "" }); }
+    function ok(title) { OKS.push(title); }
+    var v3 = isV3(), lg = (dcv("language")[0] || "").trim();
+    // metadati di base
+    if (!dcv("title")[0]) add("err", T("Titolo del libro mancante"), T("Il titolo è obbligatorio e lo leggono i lettori di schermo."), [], T("Compilalo nella scheda dei metadati."));
+    else ok(T("Titolo"));
+    if (!lg) add("err", T("Lingua del libro non indicata"), T("Senza lingua, la voce di lettura può usare la pronuncia sbagliata."), [], T("Compilala nei metadati."));
+    else ok(T("Lingua del libro"));
+    // indice
+    if (!tocSrc.nav && !tocSrc.ncx) add("err", T("Indice mancante"), T("Il libro non ha un indice di navigazione."), [], T("Aprire «Indice» e crearne uno."));
+    else if (!toc.length) add("warn", T("Indice vuoto"), T("L'indice esiste ma non contiene voci."), [], T("Usa la sezione «Indice» per generarlo."));
+    else ok(T("Indice di navigazione"));
+    // spine
+    var chs = xhtmlItems(), spineIds = Array.prototype.map.call(doc.getElementsByTagNameNS(OPF, "itemref"), function (x) { return x.getAttribute("idref"); });
+    var nolinear = Array.prototype.filter.call(doc.getElementsByTagNameNS(OPF, "itemref"), function (x) { return x.getAttribute("linear") === "no"; }).length;
+    if (nolinear) add("info", T("Pagine fuori dall'ordine di lettura"), TN(nolinear, "1 pagina è segnata «non lineare»: i lettori la saltano nella lettura continua.", "{0} pagine sono segnate «non lineari»: i lettori le saltano nella lettura continua."));
+    var missing = [];
+    // scansione dei file
+    var noLang = [], noTitle = [], noHead = [], skip = [], noAlt = [], badAlt = [], longAlt = [], imgOnly = [], noTh = [], emptyLink = [], genLink = [], smallTxt = [], lowC = [], imgs = 0, decor = 0, tables = 0;
+    var GEN = /^(clicca qui|clic qui|qui|click here|here|link|leggi|read more|more|continua|vai|this link|questo link)$/i;
+    function seen(arr, path) { if (arr.indexOf(path) < 0) arr.push(path); }
+    function scanStyleAttr(el, path) {
+      var st = el.getAttribute("style"); if (!st) return;
+      var o = declMap(st), pr = pairOf(o);
+      if (pr && pr.r < 4.5) lowC.push({ where: shortName(path), fg: pr.fg, bg: pr.bg, r: pr.r });
+    }
+    for (var i = 0; i < chs.length; i++) {
+      var path = resolve(chs[i].getAttribute("href")), f = zip.file(path);
+      if (!f) { missing.push(path); continue; }
+      if (path === tocSrc.nav) continue;
+      var d = dp.parseFromString(await f.async("string"), "application/xml");
+      if (d.getElementsByTagName("parsererror").length) continue;
+      var root = d.documentElement, text = (root.textContent || "").replace(/\s+/g, " ").trim();
+      if (!root.getAttribute("lang") && !root.hasAttributeNS(XMLNS, "lang")) seen(noLang, path);
+      var ti = d.getElementsByTagName("title")[0]; if (!ti || !ti.textContent.trim()) seen(noTitle, path);
+      var all = d.getElementsByTagName("*"), prev = 0, hcount = 0, jumped = false, nimg = 0, nimgNoAlt = 0;
+      for (var e = 0; e < all.length; e++) {
+        var el = all[e], nm = el.localName;
+        if (/^h[1-6]$/.test(nm)) { var lv = +nm.charAt(1); hcount++; if (prev && lv > prev + 1) jumped = true; prev = lv; }
+        else if (nm === "img") {
+          imgs++; nimg++;
+          if (!el.hasAttribute("alt")) { noAlt.push(path); nimgNoAlt++; }
+          else {
+            var al = el.getAttribute("alt").trim();
+            if (!al) decor++;
+            else if (/\.(jpe?g|png|gif|svg|webp)$/i.test(al) || /^(img|image|immagine|foto|picture|dsc|figure|fig)[ _\-.]?\d+$/i.test(al)) seen(badAlt, path);
+            else if (al.length > 250) seen(longAlt, path);
+          }
+        } else if (nm === "table") {
+          tables++; if (!el.getElementsByTagName("th").length) seen(noTh, path);
+        } else if (nm === "a" && el.hasAttribute("href")) {
+          var lt = (el.textContent || "").replace(/\s+/g, " ").trim(), hasImg = Array.prototype.some.call(el.getElementsByTagName("img"), function (im) { return (im.getAttribute("alt") || "").trim(); });
+          if (!lt && !hasImg && !el.getAttribute("aria-label") && !el.getAttribute("title")) seen(emptyLink, path);
+          else if (GEN.test(lt)) seen(genLink, path);
+        }
+        if (el.hasAttribute("style")) {
+          scanStyleAttr(el, path);
+          var fs = (el.getAttribute("style").match(/font-size\s*:\s*([\d.]+)\s*(px|em|%|pt)/i) || []);
+          if (fs[1] && ((fs[2] === "px" && +fs[1] < 10) || (fs[2] === "pt" && +fs[1] < 8) || (fs[2] === "em" && +fs[1] < 0.7) || (fs[2] === "%" && +fs[1] < 70))) seen(smallTxt, path);
+        }
+      }
+      if (!hcount && text.length > 1500) seen(noHead, path);
+      if (jumped) seen(skip, path);
+      if (nimg && nimgNoAlt === nimg && text.length < 20) seen(imgOnly, path);
+    }
+    if (missing.length) add("err", T("File mancanti nell'ordine di lettura"), TN(missing.length, "1 pagina indicata nel libro non esiste.", "{0} pagine indicate nel libro non esistono."), missing.map(shortName));
+    // CSS
+    var cssIts = items().filter(function (i) { return i.getAttribute("media-type") === "text/css"; });
+    for (var c = 0; c < cssIts.length; c++) {
+      var cp = resolve(cssIts[c].getAttribute("href")), cf = zip.file(cp); if (!cf) continue;
+      var css = (await cf.async("string")).replace(/\/\*[\s\S]*?\*\//g, ""), re = /([^{}@]+)\{([^{}]*)\}/g, mm;
+      while ((mm = re.exec(css))) {
+        var o = declMap(mm[2]), pr = pairOf(o);
+        if (pr && pr.r < 4.5) lowC.push({ where: mm[1].trim().replace(/\s+/g, " ").slice(0, 40) + " (" + shortName(cp) + ")", fg: pr.fg, bg: pr.bg, r: pr.r });
+        var fs2 = (o["font-size"] || "").match(/^([\d.]+)(px|em|%|pt)$/i);
+        if (fs2 && ((fs2[2] === "px" && +fs2[1] < 10) || (fs2[2] === "pt" && +fs2[1] < 8) || (fs2[2] === "em" && +fs2[1] < 0.7) || (fs2[2] === "%" && +fs2[1] < 70))) seen(smallTxt, cp);
+      }
+    }
+    // risultati
+    if (noLang.length) add("warn", T("Pagine senza lingua"), TN(noLang.length, "1 pagina non dichiara la lingua.", "{0} pagine non dichiarano la lingua."), noLang.map(shortName), T("Attiva «Imposta la lingua del libro in ogni pagina»."));
+    else if (chs.length) ok(T("Lingua nelle pagine"));
+    if (noAlt.length) add("err", T("Immagini senza descrizione"), TN(noAlt.length, "1 immagine non ha il testo alternativo: chi usa un lettore di schermo non sa cosa mostra.", "{0} immagini non hanno il testo alternativo: chi usa un lettore di schermo non sa cosa mostrano."), noAlt.filter(function (x, k, a) { return a.indexOf(x) === k; }).map(shortName), T("Premi «Cerca le immagini senza descrizione» qui sotto."));
+    else if (imgs) ok(T("Descrizioni delle immagini"));
+    if (badAlt.length) add("warn", T("Descrizioni poco utili"), T("Alcune descrizioni sono il nome del file («img01.jpg») e non dicono cosa c'è nell'immagine."), badAlt.map(shortName), T("Riscrivile con parole tue."));
+    if (longAlt.length) add("info", T("Descrizioni molto lunghe"), T("Alcune descrizioni superano i 250 caratteri: meglio una frase breve e, se serve, il dettaglio nel testo."), longAlt.map(shortName));
+    if (imgOnly.length) add("warn", T("Pagine fatte solo di immagini"), TN(imgOnly.length, "1 pagina contiene solo immagini senza descrizione (tipico dei libri scansionati): per un lettore di schermo è vuota.", "{0} pagine contengono solo immagini senza descrizione (tipico dei libri scansionati): per un lettore di schermo sono vuote."), imgOnly.map(shortName), T("Servono un riconoscimento del testo (OCR) o le descrizioni."));
+    if (noHead.length) add("warn", T("Capitoli senza titoli"), TN(noHead.length, "1 pagina lunga non ha nessun titolo: è difficile spostarsi nel libro.", "{0} pagine lunghe non hanno nessun titolo: è difficile spostarsi nel libro."), noHead.map(shortName), T("Prova la sezione «Titoli e struttura»."));
+    else if (chs.length) ok(T("Titoli presenti"));
+    if (skip.length) add("info", T("Livelli dei titoli saltati"), TN(skip.length, "In 1 pagina i titoli saltano un livello (ad esempio da h1 a h3).", "In {0} pagine i titoli saltano un livello (ad esempio da h1 a h3)."), skip.map(shortName));
+    if (noTh.length) add("warn", T("Tabelle senza intestazioni"), TN(noTh.length, "1 pagina ha tabelle senza celle d'intestazione (th).", "{0} pagine hanno tabelle senza celle d'intestazione (th)."), noTh.map(shortName), T("Le tabelle dei dati dovrebbero avere intestazioni di riga o di colonna."));
+    else if (tables) ok(T("Tabelle"));
+    if (emptyLink.length) add("warn", T("Collegamenti senza testo"), TN(emptyLink.length, "In 1 pagina ci sono collegamenti vuoti.", "In {0} pagine ci sono collegamenti vuoti."), emptyLink.map(shortName));
+    if (genLink.length) add("info", T("Collegamenti generici"), TN(genLink.length, "In 1 pagina ci sono collegamenti come «clicca qui»: fuori contesto non si capisce dove portano.", "In {0} pagine ci sono collegamenti come «clicca qui»: fuori contesto non si capisce dove portano."), genLink.map(shortName));
+    if (lowC.length) {
+      var worst = lowC.slice().sort(function (a, b) { return a.r - b.r; });
+      add(worst[0].r < 3 ? "err" : "warn", T("Contrasto dei colori insufficiente"), TN(lowC.length, "1 combinazione di colore testo/sfondo è sotto il rapporto 4,5:1 consigliato.", "{0} combinazioni di colore testo/sfondo sono sotto il rapporto 4,5:1 consigliato."), worst.slice(0, 5).map(function (x) { return x.where + ": " + hex(x.fg) + " / " + hex(x.bg) + " (" + x.r.toFixed(1) + ":1)"; }), T("Scurisci il testo o schiarisci lo sfondo."));
+    } else ok(T("Contrasto dei colori"));
+    if (smallTxt.length) add("info", T("Testo molto piccolo"), T("Alcuni testi hanno una dimensione fissa molto piccola."), smallTxt.map(shortName));
+    // metadati di accessibilità
+    var props = metas().map(function (x) { return (x.getAttribute("property") || "").replace(/^schema:/, ""); });
+    if (!v3) add("warn", T("Metadati di accessibilità non disponibili"), T("Il libro è in EPUB 2: non può dichiarare le sue caratteristiche di accessibilità."), [], T("Attiva «Aggiorna a EPUB 3» e i metadati di accessibilità."));
+    else {
+      var need = ["accessMode", "accessModeSufficient", "accessibilityFeature", "accessibilityHazard"], lack = need.filter(function (n) { return props.indexOf(n) < 0; });
+      if (lack.length) add("warn", T("Metadati di accessibilità incompleti"), TF("Mancano: {0}.", lack.join(", ")), [], T("Attiva «Aggiungi i metadati di accessibilità»."));
+      else ok(T("Metadati di accessibilità"));
+      if (props.indexOf("accessibilitySummary") < 0) add("info", T("Manca il riepilogo di accessibilità"), T("Alcuni negozi chiedono un breve testo che descriva l'accessibilità del libro (accessibilitySummary)."));
+    }
+    return { rows: R, ok: OKS };
+  }
+  function TN(n, one, many) { return n === 1 ? T(one) : TF(many, n); }
+  function shortName(p) { return String(p).split("/").pop(); }
+  async function a11yCheck() {
+    var box = $("a-rep"); box.innerHTML = ""; var msg = document.createElement("div"); msg.className = "small"; msg.textContent = T("Analizzo…"); box.appendChild(msg);
+    var res;
+    try { res = await a11yAnalyze(); } catch (e) { msg.textContent = T("Controllo non riuscito."); return; }
+    box.innerHTML = "";
+    var order = { err: 0, warn: 1, info: 2 }, rows = res.rows.slice().sort(function (a, b) { return order[a.level] - order[b.level]; });
+    var ne = rows.filter(function (r) { return r.level === "err"; }).length, nw = rows.filter(function (r) { return r.level === "warn"; }).length, ni = rows.filter(function (r) { return r.level === "info"; }).length;
+    var sum = document.createElement("div"); sum.className = "small"; sum.style.margin = "10px 0 0";
+    sum.textContent = rows.length ? TF("Problemi: {0}, avvisi: {1}, suggerimenti: {2}, controlli superati: {3}.", ne, nw, ni, res.ok.length) : T("Nessun problema trovato.") + " " + TF("Controlli superati: {0}.", res.ok.length);
+    box.appendChild(sum);
+    var TAG = { err: T("Problema"), warn: T("Avviso"), info: T("Suggerimento") };
+    rows.forEach(function (r) {
+      var row = document.createElement("div"); row.className = "sprow a-" + r.level;
+      var h = document.createElement("strong"), tg = document.createElement("span"); tg.className = "tag"; tg.textContent = TAG[r.level];
+      h.appendChild(tg); h.appendChild(document.createTextNode(r.title)); row.appendChild(h);
+      var dt = document.createElement("div"); dt.className = "small"; dt.textContent = r.detail; row.appendChild(dt);
+      if (r.files.length) { var ex = document.createElement("div"); ex.className = "small ex"; ex.textContent = r.files.slice(0, 5).join(", ") + (r.files.length > 5 ? " …" : ""); row.appendChild(ex); }
+      if (r.fix) { var fx = document.createElement("div"); fx.className = "small ex"; fx.textContent = "→ " + r.fix; row.appendChild(fx); }
+      box.appendChild(row);
+    });
+    if (res.ok.length) { var okd = document.createElement("div"); okd.className = "small"; okd.style.marginTop = "10px"; okd.textContent = "✓ " + res.ok.join(", "); box.appendChild(okd); }
+  }
   async function spineToc() {
     var spine = Array.prototype.slice.call(doc.getElementsByTagNameNS(OPF, "itemref")), out = [], its = items();
     for (var k = 0; k < spine.length; k++) {
@@ -3066,6 +3319,7 @@ label.btn:not(.ghost){color:var(--md-on-primary)}
   $("sc-run").addEventListener("click", scanRun);
   $("i-run").addEventListener("click", imgRun);
   $("a-alt").addEventListener("click", altScan);
+  $("a-chk").addEventListener("click", a11yCheck);
   $("another").addEventListener("click", function () {
     $("book").style.display = "none"; $("drop").style.display = ""; zip = doc = meta = null; say("");
   });

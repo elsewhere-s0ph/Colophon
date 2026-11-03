@@ -102,6 +102,7 @@ Un EPUB è un archivio ZIP di pagine XHTML, immagini e un file di descrizione (O
 - **Pulizia del codice:** toglie span inutili, tratti di formattazione spezzati, paragrafi vuoti, a capo doppi, commenti e attributi vuoti
 - **Controllo dei metadati:** legge il libro e propone correzioni a titolo, autori, lingua e serie (nomi di file usati come titolo, maiuscolo, «Cognome, Nome», più autori nello stesso campo, lingua rilevata dal testo); scegli tu cosa applicare
 - **Note a piè di pagina:** controlla i riferimenti, aggiunge i link di ritorno, rinumera le note, toglie i collegamenti rotti e crea note a comparsa per i lettori EPUB 3
+- **Controllo di accessibilità:** un rapporto con problemi, avvisi e suggerimenti su descrizioni delle immagini, lingua, titoli, tabelle, collegamenti, contrasto dei colori, indice e metadati di accessibilità, con l'indicazione di come correggere
 - **Aggiornamenti:** quando pubblichi una nuova versione, l'app mostra un avviso "Aggiorna" senza dover ricaricare più volte.
 
 **Interfaccia**
@@ -187,6 +188,7 @@ An EPUB is a ZIP archive of XHTML pages, images and a description file (OPF). Co
 - **Code cleanup:** removes useless spans, split formatting runs, empty paragraphs, double line breaks, comments and empty attributes
 - **Metadata check:** reads the book and suggests fixes for title, authors, language and series (file names used as titles, all caps, “Surname, Name”, several authors in one field, language detected from the text); you choose what to apply
 - **Footnotes:** checks references, adds links back, renumbers notes, removes broken links and creates pop-up notes for EPUB 3 readers
+- **Accessibility check:** a report with problems, warnings and suggestions on image descriptions, language, headings, tables, links, color contrast, table of contents and accessibility metadata, with hints on how to fix them
 - **Updates:** when a new version is published, the app shows an "Update" notice, so no repeated reloads are needed.
 
 **Interface**
