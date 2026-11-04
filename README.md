@@ -11,6 +11,7 @@
 
 <p align="center">
   <a href="https://colophon-editor.pages.dev"><b>colophon-editor.pages.dev</b></a><br>
+  <a href="https://github.com/elsewhere-s0ph">GitHub · elsewhere-s0ph</a><br>
   <a href="#italiano">Italiano</a> · <a href="#english">English</a>
 </p>
 
@@ -25,13 +26,13 @@
     <td align="center"><img src="docs/screenshots/09-immagini.png" width="200" alt=""><br><sub>Immagini · Images</sub></td>
     <td align="center"><img src="docs/screenshots/10-riepilogo.png" width="200" alt=""><br><sub>Riepilogo · Summary</sub></td>
     <td align="center"><img src="docs/screenshots/06-indice.png" width="200" alt=""><br><sub>Indice · Contents</sub></td>
-    <td align="center"><img src="docs/screenshots/07-controllo.png" width="200" alt=""><br><sub>Controllo · Book check</sub></td>
+    <td align="center"><img src="docs/screenshots/14-titoli.png" width="200" alt=""><br><sub>Titoli · Headings</sub></td>
   </tr>
   <tr>
     <td align="center"><img src="docs/screenshots/11-carattere.png" width="200" alt=""><br><sub>Font incorporato · Embedded font</sub></td>
-    <td align="center"><img src="docs/screenshots/12-epub3.png" width="200" alt=""><br><sub>EPUB 3 e accessibilità · EPUB 3 and accessibility</sub></td>
-    <td></td>
-    <td></td>
+    <td align="center"><img src="docs/screenshots/13-accessibilita.png" width="200" alt=""><br><sub>Accessibilità · Accessibility check</sub></td>
+    <td align="center"><img src="docs/screenshots/15-confronto.png" width="200" alt=""><br><sub>Prima e dopo · Before and after</sub></td>
+    <td align="center"><img src="docs/screenshots/16-capitoli.png" width="200" alt=""><br><sub>Capitoli · Chapter editor</sub></td>
   </tr>
 </table>
 
