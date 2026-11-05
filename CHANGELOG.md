@@ -9,6 +9,22 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ## Italiano
 
+### [1.0.1] – 2026-11-05
+
+#### Aggiunto
+- Licenza MIT (`LICENSE`)
+- Apertura dei file `.epub` dal file manager con l'app installata (Chromebook e computer)
+- Intestazioni di sicurezza (`_headers`): CSP, HSTS, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`
+- Manifest più completo: descrizione, id, categorie, screenshot, icone «maskable» separate
+- Descrizione, anteprima di condivisione (Open Graph) che punta alla landing, `robots.txt`
+- Versione della cache scritta in automatico a ogni pubblicazione (`build.sh`)
+
+#### Modificato
+- La PWA non viene indicizzata dai motori di ricerca (`noindex`): resta indicizzabile solo la landing
+- Service worker più robusto: l'installazione non dipende più da servizi esterni
+- JSZip incluso nell'app (`lib/`), nessun file caricato da cdnjs
+- Correttore e dizionari scaricati in secondo piano dopo il primo avvio, non all'installazione
+
 ### [1.0.0] – 2026-11-04
 
 Prima versione stabile. Editor EPUB gratuito che funziona nel browser e anche offline: i libri non vengono mai caricati su un server.
@@ -42,6 +58,22 @@ Prima versione stabile. Editor EPUB gratuito che funziona nel browser e anche of
 ---
 
 ## English
+
+### [1.0.1] – 2026-11-05
+
+#### Added
+- MIT license (`LICENSE`)
+- Opening `.epub` files from the file manager with the installed app (Chromebook and desktop)
+- Security headers (`_headers`): CSP, HSTS, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`
+- Richer manifest: description, id, categories, screenshots, separate maskable icons
+- Description, sharing preview (Open Graph) pointing to the landing page, `robots.txt`
+- Cache version written automatically on every publish (`build.sh`)
+
+#### Changed
+- The PWA is not indexed by search engines (`noindex`): only the landing page stays indexable
+- More robust service worker: installation no longer depends on external services
+- JSZip bundled with the app (`lib/`), nothing loaded from cdnjs
+- Spell checker and dictionaries downloaded in the background after first launch, not at install time
 
 ### [1.0.0] – 2026-11-04
 

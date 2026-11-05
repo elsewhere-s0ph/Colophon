@@ -10,7 +10,8 @@
 </p>
 
 <p align="center">
-  <a href="https://colophon-editor.pages.dev"><b>colophon-editor.pages.dev</b></a><br>
+  <a href="https://colophon-home.pages.dev"><b>colophon-home.pages.dev</b></a> · <a href="https://colophon-editor.pages.dev">colophon-editor.pages.dev</a><br>
+  <sub>Sito · Website &nbsp;|&nbsp; App</sub><br>
   <a href="https://github.com/elsewhere-s0ph">GitHub · elsewhere-s0ph</a><br>
   <a href="#italiano">Italiano</a> · <a href="#english">English</a>
 </p>
@@ -105,6 +106,7 @@ Un EPUB è un archivio ZIP di pagine XHTML, immagini e un file di descrizione (O
 - **Note a piè di pagina:** controlla i riferimenti, aggiunge i link di ritorno, rinumera le note, toglie i collegamenti rotti e crea note a comparsa per i lettori EPUB 3
 - **Controllo di accessibilità:** un rapporto con problemi, avvisi e suggerimenti su descrizioni delle immagini, lingua, titoli, tabelle, collegamenti, contrasto dei colori, indice e metadati di accessibilità, con l'indicazione di come correggere
 - **Aggiornamenti:** quando pubblichi una nuova versione, l'app mostra un avviso "Aggiorna" senza dover ricaricare più volte.
+- **Apri i file dal file manager:** installando Colophon su Chromebook o computer, un doppio clic su un `.epub` lo apre direttamente nell'app (non disponibile su Android)
 
 **Interfaccia**
 - **Italiano e inglese:** al primo avvio propone la lingua del dispositivo; si cambia in ogni momento con i pulsanti IT / EN
@@ -191,6 +193,7 @@ An EPUB is a ZIP archive of XHTML pages, images and a description file (OPF). Co
 - **Footnotes:** checks references, adds links back, renumbers notes, removes broken links and creates pop-up notes for EPUB 3 readers
 - **Accessibility check:** a report with problems, warnings and suggestions on image descriptions, language, headings, tables, links, color contrast, table of contents and accessibility metadata, with hints on how to fix them
 - **Updates:** when a new version is published, the app shows an "Update" notice, so no repeated reloads are needed.
+- **Open files from your file manager:** once Colophon is installed on a Chromebook or computer, double-clicking an `.epub` opens it straight in the app (not available on Android)
 
 **Interface**
 - **Italian and English:** on first launch it proposes your device's language; switch at any time with the IT / EN buttons
@@ -224,3 +227,5 @@ A static site: no build step, no backend. / Un sito statico: nessuna compilazion
 **Libraries / Librerie:** [JSZip](https://stuk.github.io/jszip/) (read and write EPUB archives), [hunspell-asm](https://github.com/kwonoj/hunspell-asm) (MIT), Italian dictionary from [wooorm/dictionaries](https://github.com/wooorm/dictionaries) (GPL-3.0) and English dictionary (MIT and BSD). Font: [Roboto Flex](https://github.com/googlefonts/roboto-flex) (SIL OFL 1.1). Icons: [Material Symbols](https://fonts.google.com/icons) by Google (Apache 2.0). License texts are in `dict/` and `fonts/`.
 
 **Privacy:** Colophon works on your device; books are never uploaded. See / Vedi [PRIVACY.md](PRIVACY.md).
+
+**Licenza / License:** [MIT](LICENSE) © 2026 s0ph. Dizionari, font e librerie di terze parti mantengono le proprie licenze · Third-party dictionaries, fonts and libraries keep their own licenses.

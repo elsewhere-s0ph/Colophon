@@ -1,35 +1,60 @@
-var C = "colophon-v16";
-var SHELL = ["./", "index.html", "manifest.webmanifest", "icon.svg", "icon-192.png", "icon-512.png",
-  "hunspell.bundle.js", "fonts/roboto-flex.woff2", "dict/it.aff", "dict/it.dic", "dict/en.aff", "dict/en.dic",
-  "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"];
+// Colophon – service worker.
+// La versione della cache viene scritta da build.sh a ogni pubblicazione su Cloudflare
+// (impronta dei file dell'app). Se build.sh non gira, vale la versione manuale qui sotto.
+var BUILD = "__BUILD__";
+var C = "colophon-" + (BUILD.charAt(0) === "_" ? "v17" : BUILD);
+var DATA = "colophon-data-1"; // correttore e dizionari: cambiano di rado, restano tra una versione e l'altra
+
+var CORE = ["./", "index.html", "manifest.webmanifest", "icon.svg", "icon-192.png", "icon-512.png",
+  "icon-maskable-192.png", "icon-maskable-512.png", "apple-touch-icon.png",
+  "lib/jszip.min.js", "fonts/roboto-flex.woff2"];
+var LATER = ["hunspell.bundle.js", "dict/it.aff", "dict/it.dic", "dict/en.aff", "dict/en.dic"];
+
 self.addEventListener("install", function (e) {
-  e.waitUntil(caches.open(C).then(function (c) { return c.addAll(SHELL); }));
+  e.waitUntil(caches.open(C).then(function (c) { return c.addAll(CORE); }));
   self.skipWaiting();
 });
+
 self.addEventListener("activate", function (e) {
   e.waitUntil(caches.keys().then(function (ks) {
-    return Promise.all(ks.filter(function (k) { return (k.indexOf("colophon-") === 0 || k.indexOf("epub-") === 0) && k !== C; }).map(function (k) { return caches.delete(k); }));
+    return Promise.all(ks.filter(function (k) {
+      return (k.indexOf("colophon-") === 0 || k.indexOf("epub-") === 0) && k !== C && k !== DATA;
+    }).map(function (k) { return caches.delete(k); }));
   }).then(function () { return self.clients.claim(); }));
 });
-var CACHEABLE = ["cdnjs.cloudflare.com"];
-function put(req, r) {
-  if (r && r.ok) { var cp = r.clone(); caches.open(C).then(function (c) { c.put(req, cp); }); }
+
+// Scarica in secondo piano (a richiesta della pagina) ciò che serve solo offline per il correttore
+function warm() {
+  return caches.open(DATA).then(function (c) {
+    return Promise.all(LATER.map(function (u) {
+      return c.match(u).then(function (hit) { return hit || c.add(u).catch(function () {}); });
+    }));
+  });
+}
+self.addEventListener("message", function (e) {
+  if (e.data && e.data.type === "warm") e.waitUntil(warm());
+});
+
+function store(req, r) {
+  if (r && r.status === 200 && r.type === "basic") {
+    var cp = r.clone(), isData = LATER.some(function (u) { return req.url.slice(-u.length) === u; });
+    caches.open(isData ? DATA : C).then(function (c) { c.put(req, cp); });
+  }
   return r;
 }
+
 self.addEventListener("fetch", function (e) {
-  var u = new URL(e.request.url);
-  if (e.request.method !== "GET") return;
-  var own = u.origin === self.location.origin;
-  // Ricerche online (Google Books, Open Library) e copertine: sempre dalla rete, mai in cache
-  if (!own && CACHEABLE.indexOf(u.hostname) < 0) return;
-  // Pagina principale: prima la rete (così una modifica senza aumento di versione si vede comunque), cache solo offline
-  if (own && (e.request.mode === "navigate" || u.pathname === "/" || /\/index\.html$/.test(u.pathname))) {
-    e.respondWith(fetch(e.request).then(function (r) { return put(e.request, r); }).catch(function () {
-      return caches.match(e.request).then(function (h) { return h || caches.match("index.html"); });
+  var req = e.request, u = new URL(req.url);
+  // Solo file dell'app: le ricerche online (Google Books, Open Library) passano sempre dalla rete
+  if (req.method !== "GET" || u.origin !== self.location.origin) return;
+  // Pagina principale: prima la rete (una modifica si vede subito), la cache solo offline
+  if (req.mode === "navigate" || u.pathname === "/" || /\/index\.html$/.test(u.pathname)) {
+    e.respondWith(fetch(req).then(function (r) { return store(req, r); }).catch(function () {
+      return caches.match(req).then(function (h) { return h || caches.match("index.html"); });
     }));
     return;
   }
-  e.respondWith(caches.match(e.request).then(function (hit) {
-    return hit || fetch(e.request).then(function (r) { return put(e.request, r); });
+  e.respondWith(caches.match(req).then(function (hit) {
+    return hit || fetch(req).then(function (r) { return store(req, r); });
   }));
 });
