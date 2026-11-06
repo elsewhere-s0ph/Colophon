@@ -9,6 +9,19 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ## Italiano
 
+### [1.1.1] – 2026-11-06
+
+#### Aggiunto
+- Scorciatoie dell'app installata (tasto destro sull'icona): «Apri un EPUB», «Privacy e condizioni», «Lingua»
+- Screenshot a schermo largo (1280×720) per la finestra di installazione su computer
+- `sitemap.xml` e dati strutturati (WebApplication) per i motori di ricerca
+
+#### Modificato
+- Colophon ora può essere indicizzato dai motori di ricerca: rimossi `noindex` e `X-Robots-Tag`, aggiunto il link canonico, `robots.txt` indica la sitemap
+- Service worker: ogni file dell'installazione viene scaricato separatamente (con un secondo tentativo); se ne manca uno secondario l'app si installa comunque
+- HSTS a 2 anni (`max-age=63072000`) con `includeSubDomains`
+- Immagine di anteprima (`og-image.png`) alleggerita da 314 KB a 45 KB
+
 ### [1.1.0] – 2026-11-06
 
 #### Aggiunto
@@ -65,6 +78,19 @@ Prima versione stabile. Editor EPUB gratuito che funziona nel browser e anche of
 ---
 
 ## English
+
+### [1.1.1] – 2026-11-06
+
+#### Added
+- Installed-app shortcuts (right-click the icon): "Open an EPUB", "Privacy and terms", "Language"
+- Wide screenshots (1280×720) for the desktop install dialog
+- `sitemap.xml` and structured data (WebApplication) for search engines
+
+#### Changed
+- Colophon can now be indexed by search engines: `noindex` and `X-Robots-Tag` removed, canonical link added, `robots.txt` points to the sitemap
+- Service worker: each install file is fetched separately (with one retry); if a non-essential file is missing the app still installs
+- HSTS set to 2 years (`max-age=63072000`) with `includeSubDomains`
+- Sharing preview image (`og-image.png`) reduced from 314 KB to 45 KB
 
 ### [1.1.0] – 2026-11-06
 

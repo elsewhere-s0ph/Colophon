@@ -1,4 +1,4 @@
-# L'app non va indicizzata (lo dicono meta robots e X-Robots-Tag): qui si lascia
-# l'accesso libero perché i motori di ricerca possano leggere quel noindex.
 User-agent: *
 Allow: /
+
+Sitemap: https://colophon-editor.pages.dev/sitemap.xml

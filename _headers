@@ -1,7 +1,6 @@
 /*
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self'; connect-src 'self' data: https://www.googleapis.com https://openlibrary.org https://covers.openlibrary.org https://archive.org https://*.archive.org https://books.google.com https://*.googleusercontent.com https://*.gstatic.com; worker-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self' https://colophon-home.pages.dev
-  Strict-Transport-Security: max-age=31536000
-  X-Robots-Tag: noindex, nofollow
+  Strict-Transport-Security: max-age=63072000; includeSubDomains
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()

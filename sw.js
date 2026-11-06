@@ -2,16 +2,34 @@
 // La versione della cache viene scritta da build.sh a ogni pubblicazione su Cloudflare
 // (impronta dei file dell'app). Se build.sh non gira, vale la versione manuale qui sotto.
 var BUILD = "__BUILD__";
-var C = "colophon-" + (BUILD.charAt(0) === "_" ? "v18" : BUILD);
+var C = "colophon-" + (BUILD.charAt(0) === "_" ? "v19" : BUILD);
 var DATA = "colophon-data-1"; // correttore e dizionari: cambiano di rado, restano tra una versione e l'altra
 
 var CORE = ["./", "index.html", "manifest.webmanifest", "icon.svg", "icon-192.png", "icon-512.png",
   "icon-maskable-192.png", "icon-maskable-512.png", "apple-touch-icon.png",
+  "shortcut-open.png", "shortcut-privacy.png", "shortcut-lang.png",
   "lib/jszip.min.js", "fonts/roboto-flex.woff2"];
+// Indispensabili: senza questi l'installazione fallisce e riparte al prossimo avvio
+var ESSENTIAL = ["./", "index.html"];
 var LATER = ["hunspell.bundle.js", "dict/it.aff", "dict/it.dic", "dict/en.aff", "dict/en.dic"];
 
 self.addEventListener("install", function (e) {
-  e.waitUntil(caches.open(C).then(function (c) { return c.addAll(CORE); }));
+  e.waitUntil(caches.open(C).then(function (c) {
+    // Un file per volta: se uno solo non si scarica, gli altri restano in cache
+    function one(u, left) {
+      return fetch(new Request(u, { cache: "reload" })).then(function (r) {
+        if (!r.ok) throw new Error(u);
+        return c.put(u, r);
+      }).catch(function (err) {
+        if (left > 0) return one(u, left - 1);
+        return { failed: u };
+      });
+    }
+    return Promise.all(CORE.map(function (u) { return one(u, 1); })).then(function (res) {
+      var bad = res.filter(function (x) { return x && x.failed; }).map(function (x) { return x.failed; });
+      if (bad.some(function (u) { return ESSENTIAL.indexOf(u) >= 0; })) throw new Error("precache");
+    });
+  }));
   self.skipWaiting();
 });
 

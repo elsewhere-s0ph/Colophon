@@ -75,6 +75,20 @@
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Controllo di accessibilità"
+    },
+    {
+      "src": "docs/screenshots/wide-01-metadati.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Metadati e copertina"
+    },
+    {
+      "src": "docs/screenshots/wide-02-stile-anteprima.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Stile e anteprima"
     }
   ],
   "file_handlers": [
@@ -93,5 +107,46 @@
       "focus-existing",
       "auto"
     ]
-  }
+  },
+  "shortcuts": [
+    {
+      "name": "Apri un EPUB",
+      "short_name": "Apri",
+      "description": "Scegli un file EPUB da modificare",
+      "url": "./index.html?a=open",
+      "icons": [
+        {
+          "src": "shortcut-open.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Privacy e condizioni",
+      "short_name": "Privacy",
+      "description": "Informativa privacy e condizioni d'uso",
+      "url": "./index.html?a=privacy",
+      "icons": [
+        {
+          "src": "shortcut-privacy.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Lingua",
+      "short_name": "Lingua",
+      "description": "Cambia la lingua dell'interfaccia",
+      "url": "./index.html?a=lang",
+      "icons": [
+        {
+          "src": "shortcut-lang.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
 }
