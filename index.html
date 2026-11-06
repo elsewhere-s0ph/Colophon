@@ -522,6 +522,126 @@ label.btn:not(.ghost){color:var(--md-on-primary)}
       <div class="actions" style="margin-top:0;padding-top:10px"><button data-i="verified" class="btn ghost" id="check" type="button">Controlla il libro</button></div>
       <div id="report" class="small" style="margin-top:10px"></div>
     </details>
+    <details class="opt t2"><summary><span class="si shp" aria-hidden="true"><svg viewBox="0 -960 960 960"><path d="M120-40v-290q0-78.85 55.57-134.42Q231.15-520 310-520h60v-340q0-24.75 17.63-42.38Q405.25-920 430-920h100q24.75 0 42.38 17.62Q590-884.75 590-860v340h60q78.85 0 134.42 55.58Q840-408.85 840-330v290H120Zm60-60h105v-130q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v130h105v-130q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v130h105v-130q0-12.75 8.68-21.38 8.67-8.62 21.5-8.62 12.82 0 21.32 8.62 8.5 8.63 8.5 21.38v130h105v-230q0-54.17-37.92-92.08Q704.17-460 650-460H310q-54.17 0-92.08 37.92Q180-384.17 180-330v230Zm350-420v-340H430v340h100Zm0 0H430h100Z"/></svg></span><span>Pulizia del testo</span></summary>
+      <label for="t-quotes">Virgolette</label>
+      <select id="t-quotes"><option value="">Invariate</option><option value="it">Caporali «…»</option><option value="en">Inglesi “…”</option></select>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="t-apos"> Apostrofi tipografici (l’amico)</label>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="t-dots"> Tre puntini diventano …</label>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="t-spaces"> Elimina gli spazi doppi</label>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="t-punct"> Elimina lo spazio prima della punteggiatura</label>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="t-dash"> Dialoghi con trattino lungo (—)</label>
+    </details>
+
+    <details class="opt t0"><summary><span class="si shp" aria-hidden="true"><svg viewBox="0 -960 960 960"><path d="M80-745v-175h175v60H140v115H80Zm740 0v-115H705v-60h175v175h-60ZM80-40v-175h60v115h115v60H80Zm625 0v-60h115v-115h60v175H705ZM260-220h440v-520H260v520Zm0 60q-24 0-42-18t-18-42v-520q0-24 18-42t42-18h440q24 0 42 18t18 42v520q0 24-18 42t-42 18H260Zm110-410h220v-60H370v60Zm0 120h220v-60H370v60Zm0 120h220v-60H370v60ZM260-220v-520 520Z"/></svg></span><span>Pulizia da scansione (OCR)</span></summary>
+      <div class="small">Per libri convertiti da PDF o da scansioni. «Analizza» mostra cosa verrebbe corretto, senza cambiare nulla.</div>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="t-hyph"> Unisci le parole spezzate dal trattino a fine riga</label>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="t-merge"> Unisci i paragrafi interrotti a metà frase</label>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="t-pages"> Togli i numeri di pagina isolati</label>
+      <div class="actions"><button data-i="manage_search" class="btn ghost" id="sc-run" type="button">Analizza il libro</button></div>
+      <div class="small" id="sc-out" style="margin-top:8px"></div>
+      <div id="sc-list"></div>
+    </details>
+
+            <details class="opt t0" id="mq-sec"><summary><span class="si shp" aria-hidden="true"><svg viewBox="0 -960 960 960"><path d="M132-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h696q24 0 42 18t18 42v600q0 24-18 42t-42 18H132Zm0-60h696v-600H132v600Zm68-100h200v-80H200v80Zm382-80 198-198-57-57-141 142-57-57-56 57 113 113Zm-382-80h200v-80H200v80Zm0-160h200v-80H200v80Zm-68 420v-600 600Z"/></svg></span><span>Controllo dei metadati</span></summary>
+      <div class="small">Legge il libro e propone correzioni per titolo, autori, lingua e serie. Scegli tu quali applicare: i campi in alto vengono compilati e potrai ricontrollarli prima di salvare.</div>
+      <div class="actions"><button data-i="manage_search" class="btn ghost" id="mq-run" type="button">Analizza i metadati</button></div>
+      <div class="small" id="mq-out" style="margin-top:8px"></div>
+      <div id="mq-list"></div>
+      <div class="actions" style="margin-top:12px"><button data-i="check" class="btn" id="mq-apply" type="button" style="display:none">Applica i suggerimenti spuntati</button></div>
+    </details>
+    <details class="opt t1" id="fn-sec"><summary><span class="si shp" aria-hidden="true"><svg viewBox="0 -960 960 960"><path d="M120-80v-60h100v-30h-60v-60h60v-30H120v-60h120q17 0 28.5 11.5T280-280v40q0 17-11.5 28.5T240-200q17 0 28.5 11.5T280-160v40q0 17-11.5 28.5T240-80H120Zm0-280v-110q0-17 11.5-28.5T160-510h60v-30H120v-60h120q17 0 28.5 11.5T280-560v70q0 17-11.5 28.5T240-450h-60v30h100v60H120Zm60-280v-180h-60v-60h120v240h-60Zm189 431v-60h471v60H369Zm0-243v-60h471v60H369Zm0-243v-60h471v60H369Z"/></svg></span><span>Note a piè di pagina</span></summary>
+      <div class="small">Controlla i riferimenti alle note (numeri nel testo) e le note stesse: collegamenti che non tornano al testo, numerazione irregolare, note a comparsa.</div>
+      <div class="actions"><button data-i="manage_search" class="btn ghost" id="fn-run" type="button">Controlla le note</button></div>
+      <div class="small" id="fn-out" style="margin-top:8px"></div>
+      <div id="fn-list"></div>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="fn-back"> Aggiungi il link di ritorno alle note che non l'hanno</label>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="fn-num"> Rinumera le note (1, 2, 3…) quando la numerazione è irregolare</label>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="fn-pop"> Note a comparsa nei lettori EPUB 3 (attiva anche l'EPUB 3)</label>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="fn-broken"> Togli i collegamenti rotti delle note (resta il numero)</label>
+      <div class="small" style="margin-top:8px">La rinumerazione agisce solo sui capitoli in cui le note stanno nello stesso file dei numeri e sono tutte collegate.</div>
+    </details>
+<details class="opt t1" id="hd-sec"><summary><span class="si shp" aria-hidden="true"><svg viewBox="0 -960 960 960"><path d="M430-160v-540H200v-100h560v100H530v540H430Z"/></svg></span><span>Titoli e struttura</span></summary>
+      <div class="small">Trova i titoli scritti come semplice testo (in grassetto, in maiuscolo o come «Capitolo 3») e li trasforma in veri titoli: migliorano l'indice, la navigazione e l'accessibilità.</div>
+      <div class="actions"><button data-i="manage_search" class="btn ghost" id="hd-run" type="button">Cerca i titoli finti</button></div>
+      <div class="small" id="hd-out" style="margin-top:8px"></div>
+      <div id="hd-list"></div>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="hd-toc" checked> Aggiungi i nuovi titoli all'indice</label>
+    </details>
+    <details class="opt t2" id="td-sec"><summary><span class="si shp" aria-hidden="true"><svg viewBox="0 -960 960 960"><path d="M320-242 80-482l242-242 43 43-199 199 197 197-43 43Zm318 2-43-43 199-199-197-197 43-43 240 240-242 242Z"/></svg></span><span>Pulizia del codice</span></summary>
+      <div class="small">Toglie il codice inutile lasciato da Word, dai convertitori o da altri programmi: il libro diventa più leggero e rispetta meglio le impostazioni del tuo lettore. Il testo non cambia.</div>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="td-span"> Semplifica la formattazione (togli gli span inutili, unisci i tratti in corsivo o grassetto spezzati)</label>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="td-empty"> Togli i paragrafi vuoti</label>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="td-br"> Trasforma gli a capo doppi in veri paragrafi</label>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="td-attr"> Togli commenti e attributi vuoti</label>
+      <div class="actions"><button data-i="calculate" class="btn ghost" id="td-run" type="button">Controlla quanto si può pulire</button></div>
+      <div class="small" id="td-out" style="margin-top:8px"></div>
+    </details>
+<details class="opt t1"><summary><span class="si shp" aria-hidden="true"><svg viewBox="0 -960 960 960"><path d="M796-121 533-384q-30 26-70 40.5T378-329q-108 0-183-75t-75-181q0-106 75-181t182-75q106 0 180.5 75T632-585q0 43-14 83t-42 75l264 262-44 44ZM377-389q81 0 138-57.5T572-585q0-81-57-138.5T377-781q-82 0-139.5 57.5T180-585q0 81 57.5 138.5T377-389Z"/></svg></span><span>Cerca, sostituisci ed elimina</span></summary>
+      <label for="r-del">Elimina questi testi <span class="small">(uno per riga)</span></label>
+      <textarea id="r-del" style="min-height:70px"></textarea>
+      <label for="r-rep">Sostituisci <span class="small">(una regola per riga: cerca =&gt; sostituisci)</span></label>
+      <textarea id="r-rep" style="min-height:70px"></textarea>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="r-case"> Distingui maiuscole e minuscole</label>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="r-rx"> Usa espressioni regolari (avanzato)</label>
+      <div class="actions"><button data-i="tag" class="btn ghost" id="r-count" type="button">Conta le occorrenze</button></div>
+      <div class="small" id="r-out" style="margin-top:8px"></div>
+    </details>
+    <details class="opt t2"><summary><span class="si shp" aria-hidden="true"><svg viewBox="0 -960 960 960"><path d="M563-80 404-239l42-42 117 117 240-240 42 42L563-80ZM120-312l200-527h66l200 527h-67l-54-142H238l-54 142h-64Zm137-200h189l-92-254h-5l-92 254Z"/></svg></span><span>Controllo ortografico</span></summary>
+      <div class="small">Cerca le parole che non sono nel dizionario e propone una correzione. Scegli tu quali applicare: la correzione vale per tutto il libro e viene scritta quando salvi.</div>
+      <label for="sp-lang">Dizionario</label>
+      <select id="sp-lang"><option value="it">Italiano</option><option value="en">English</option></select>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="sp-names" checked> Ignora le parole con l'iniziale maiuscola (nomi propri)</label>
+      <div class="actions"><button data-i="spellcheck" class="btn ghost" id="sp-run" type="button">Controlla l'ortografia</button></div>
+      <div class="small" id="sp-out" style="margin-top:8px"></div>
+      <div class="actions" id="sp-bulk" style="display:none"><button class="btn ghost sm" id="sp-all" type="button">Seleziona tutte</button><button class="btn ghost sm" id="sp-none" type="button">Deseleziona tutte</button><button class="btn ghost sm" id="sp-reset" type="button">Dimentica le parole ignorate</button></div>
+      <div id="sp-list"></div>
+    </details>
+    </div>
+    <details class="opt t0"><summary><span class="si shp" aria-hidden="true"><svg viewBox="0 -960 960 960"><path d="M200-120v-665q0-24 18-42t42-18h440q24 0 42 18t18 42v665L480-240 200-120Zm60-91 220-93 220 93v-574H260v574Zm0-574h440-440Z"/></svg></span><span>Preset di stile</span></summary>
+      <div class="small">Salva le impostazioni di stile, pulizia e ricerca per riapplicarle ad altri libri.</div>
+      <label for="p-name">Nome del preset</label>
+      <input type="text" id="p-name" placeholder="es. Romanzi">
+      <div class="actions" style="margin-top:10px"><button data-i="bookmark_add" class="btn ghost" id="p-save" type="button">Salva preset</button></div>
+      <label for="p-sel">Preset salvati</label>
+      <select id="p-sel"></select>
+      <div class="actions" style="margin-top:10px"><button data-i="check" class="btn ghost" id="p-apply" type="button">Applica</button><button data-i="delete" class="btn ghost" id="p-del" type="button">Elimina</button></div>
+    </details>
+    <details class="opt t1"><summary><span class="si shp" aria-hidden="true"><svg viewBox="0 -960 960 960"><path d="m507-524-77-76 24-56h-79L271-760h529v100H565l-58 136ZM806-56 457-406l-88 206H260l120-282L56-806l42-42L848-98l-42 42Z"/></svg></span><span>Pulizia dello stile del libro</span></summary>
+      <div class="small">Toglie ciò che l'editore ha imposto, così il tuo lettore usa le sue impostazioni.</div>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="c-color"> Togli i colori (testo e sfondo)</label>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="c-font"> Togli caratteri e dimensioni imposti</label>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="c-all"> Togli tutti i fogli di stile e gli stili nel testo</label>
+    </details>
+    <details class="opt t2"><summary><span class="si shp" aria-hidden="true"><svg viewBox="0 -960 960 960"><path d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h600q24 0 42 18t18 42v600q0 24-18 42t-42 18H180Zm0-60h600v-600H180v600Zm56-97h489L578-473 446-302l-93-127-117 152Zm-56 97v-600 600Z"/></svg></span><span>Ottimizza le immagini</span></summary>
+      <div class="small">Ricomprime le immagini (copertina compresa) per ridurre il peso del file. Le immagini già leggere non vengono toccate.</div>
+      <label for="i-width">Larghezza massima</label>
+      <select id="i-width"><option value="">Invariata</option><option value="800">800 px</option><option value="1000">1000 px</option><option value="1200">1200 px</option><option value="1600">1600 px</option><option value="2000">2000 px</option></select>
+      <label for="i-q">Qualità JPG</label>
+      <select id="i-q"><option value="">Non ottimizzare</option><option value="0.6">Bassa (60)</option><option value="0.75">Media (75)</option><option value="0.85">Alta (85)</option><option value="0.92">Molto alta (92)</option></select>
+      <div class="actions"><button data-i="compress" class="btn ghost" id="i-run" type="button">Calcola il risparmio</button></div>
+      <div class="small" id="i-out" style="margin-top:8px"></div>
+    </details>
+    <details class="opt t0"><summary><span class="si shp" aria-hidden="true"><svg viewBox="0 -960 960 960"><path d="M428.5-755.5Q407-777 407-807t21.5-51.5Q450-880 480-880t51.5 21.5Q553-837 553-807t-21.5 51.5Q510-734 480-734t-51.5-21.5ZM373-80v-533q-68-5-131.5-14T120-650l15-60q85 20 169 28.5t176 8.5q92 0 176-8.5T825-710l15 60q-58 14-121.5 23T587-613v533h-60v-260h-94v260h-60Z"/></svg></span><span>EPUB 3 e accessibilità</span></summary>
+      <div class="small" id="a-ver"></div>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="a-v3"> Aggiorna a EPUB 3 (l'indice resta compatibile con i vecchi lettori)</label>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="a-lang"> Imposta la lingua del libro in ogni pagina</label>
+      <label class="check sw-row"><input class="sw" type="checkbox" id="a-meta"> Aggiungi i metadati di accessibilità (aggiorna anche a EPUB 3)</label>
+      <div class="small" style="margin-top:8px">I metadati dichiarano ciò che l'app riconosce nel libro: testo, immagini, indice e ordine di lettura.</div>
+      <div class="actions"><button data-i="check" class="btn" id="a-chk" type="button">Controlla l'accessibilità del libro</button><button data-i="image_search" class="btn ghost" id="a-alt" type="button">Cerca le immagini senza descrizione</button></div>
+      <div class="arep" id="a-rep" aria-live="polite"></div>
+      <div class="small" id="a-out" style="margin-top:8px"></div>
+      <div id="a-list"></div>
+    </details>
+    <details class="opt t1"><summary><span class="si shp" aria-hidden="true"><svg viewBox="0 -960 960 960"><path d="M377-198v-60h463v60H377Zm0-252v-60h463v60H377Zm0-253v-60h463v60H377ZM189-161q-28.05 0-48.02-19Q121-199 121-227.5t19.5-48q19.5-19.5 48-19.5t47.5 19.98q19 19.97 19 48.02 0 27.23-19.39 46.61Q216.23-161 189-161Zm0-252q-28.05 0-48.02-19.5Q121-452 121-480t19.98-47.5Q160.95-547 189-547q27.23 0 46.61 19.5Q255-508 255-480t-19.39 47.5Q216.23-413 189-413Zm-48.5-272.5Q121-705 121-733t19.5-47.5Q160-800 188-800t47.5 19.5Q255-761 255-733t-19.5 47.5Q216-666 188-666t-47.5-19.5Z"/></svg></span><span>Indice del libro</span></summary>
+      <div class="small">Rinomina, sposta o elimina le voci. Il rientro mostra il livello.</div>
+      <div id="toc"></div>
+      <div class="actions"><button data-i="autorenew" class="btn ghost" id="toc-gen" type="button">Rigenera dai capitoli</button></div>
+    </details>
+    <details class="opt t2"><summary><span class="si shp" aria-hidden="true"><svg viewBox="0 -960 960 960"><path d="m346-60-76-130-151-31 17-147-96-112 96-111-17-147 151-31 76-131 134 62 134-62 77 131 150 31-17 147 96 111-96 112 17 147-150 31-77 130-134-62-134 62Zm27-79 107-45 110 45 67-100 117-30-12-119 81-92-81-94 12-119-117-28-69-100-108 45-110-45-67 100-117 28 12 119-81 94 81 92-12 121 117 28 70 100Zm107-341Zm-43 133 227-225-45-41-182 180-95-99-46 45 141 140Z"/></svg></span><span>Verifica di validità</span></summary>
+      <p class="hint" style="margin:10px 0 0">Controlla che il file sia costruito correttamente (pacchetto, pagine, collegamenti, indice). Viene fatta anche in automatico prima di salvare.</p>
+      <div class="actions" style="margin-top:0;padding-top:10px"><button data-i="verified" class="btn ghost" id="va-run" type="button">Verifica il file</button></div>
+      <div class="arep" id="va-rep" aria-live="polite"></div>
+    </details>
     <details class="opt t0"><summary><span class="si shp" aria-hidden="true"><svg viewBox="0 -960 960 960"><path d="M284-277h60v-205h-60v205Zm332 0h60v-420h-60v420Zm-166 0h60v-118h-60v118Zm0-205h60v-60h-60v60ZM180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h600q24 0 42 18t18 42v600q0 24-18 42t-42 18H180Zm0-60h600v-600H180v600Zm0-600v600-600Z"/></svg></span><span>Statistiche del libro</span></summary>
       <div class="actions" style="margin-top:0;padding-top:10px"><button data-i="calculate" class="btn ghost" id="stats-btn" type="button">Calcola</button></div>
       <div id="stats" class="small" style="margin-top:10px"></div>
@@ -657,7 +777,7 @@ label.btn:not(.ghost){color:var(--md-on-primary)}
     if (persist) { try { localStorage.setItem(LKEY, l); } catch (e) {} }
     applyLang();
     if (!initial) {
-      ["report", "stats", "r-out", "sp-out", "results", "sp-list", "sc-out", "sc-list", "i-out", "a-out", "a-list", "a-rep", "hd-out", "hd-list", "td-out", "mq-out", "mq-list", "fn-out", "fn-list"].forEach(function (id) { $(id).textContent = ""; });
+      ["report", "stats", "r-out", "sp-out", "results", "sp-list", "sc-out", "sc-list", "i-out", "a-out", "a-list", "a-rep", "va-rep", "hd-out", "hd-list", "td-out", "mq-out", "mq-list", "fn-out", "fn-list"].forEach(function (id) { $(id).textContent = ""; });
       $("sp-bulk").style.display = "none"; say("");
       if (toc.length) renderToc();
       if (doc) epubInfo();
@@ -733,6 +853,7 @@ label.btn:not(.ghost){color:var(--md-on-primary)}
     $("a-v3").checked = false; $("a-list").innerHTML = ""; $("a-rep").innerHTML = ""; $("a-out").textContent = ""; epubInfo();
     $("report").textContent = ""; $("stats").textContent = ""; $("r-out").textContent = ""; $("sp-list").innerHTML = ""; $("sp-out").textContent = ""; $("sp-bulk").style.display = "none";
     loadToc().then(renderToc);
+    $("va-rep").innerHTML = ""; origVal = null; var z0 = zip; setTimeout(function () { if (zip === z0) origVal = validateEpub(z0).catch(function () { return []; }); }, 400);
     say("");
   }
 
@@ -752,6 +873,7 @@ label.btn:not(.ghost){color:var(--md-on-primary)}
     sk = sk || {};
     var ch = function (k) { return changed(k) && !sk["f:" + k]; };
     try {
+      var base0 = origVal ? await origVal : null;
       if (ch("title")) setDC("title", val("title") ? [val("title")] : []);
       if (ch("authors")) setDC("creator", split(val("authors"), ";"));
       if (ch("publisher")) setDC("publisher", val("publisher") ? [val("publisher")] : []);
@@ -795,6 +917,21 @@ label.btn:not(.ghost){color:var(--md-on-primary)}
       zip.file("mimetype", "application/epub+zip", { compression: "STORE" });
       var blob = await zip.generateAsync({ type: "blob", mimeType: "application/epub+zip", compression: "DEFLATE" });
 
+      var vres = null, newErr = [];
+      try {
+        vres = await validateEpub(await JSZip.loadAsync(blob));
+        var bs = {}; (base0 || []).forEach(function (x) { bs[vSig(x)] = 1; });
+        newErr = vres.filter(function (x) { return VMSG[x.code][0] === "err" && !bs[vSig(x)]; });
+        renderVal($("va-rep"), vres);
+      } catch (e) { vres = null; newErr = []; }
+      if (newErr.length) {
+        var det = []; newErr.forEach(function (x) { var t0 = T(VMSG[x.code][1]); if (det.indexOf(t0) < 0) det.push(t0); });
+        if (!confirm(TF("Il file che stai per salvare ha {0} nuovi problemi che potrebbero impedirne l'apertura su alcuni lettori ({1}). Salvarlo comunque?", newErr.length, det.slice(0, 3).join("; ")))) {
+          var vd = $("va-rep").closest("details"); if (vd) vd.open = true;
+          say(T("Salvataggio annullato. Controlla «Verifica di validità»."), true); return;
+        }
+      }
+      if (vres) bookNote += ", " + (vres.length ? TF("verifica: {0} segnalazioni", vres.length) : T("verifica: nessun problema"));
       var name = outName(sk);
       var dl = (window.claude && window.claude.use) ? await window.claude.use("downloads") : null;
       if (dl) {
@@ -2217,6 +2354,92 @@ label.btn:not(.ghost){color:var(--md-on-primary)}
   Object.assign(EN, {
     "È disponibile una nuova versione di Colophon.": "A new version of Colophon is available.",
     "Aggiorna": "Update",
+    "Verifica di validità": "File validity check",
+    "Controlla che il file sia costruito correttamente (pacchetto, pagine, collegamenti, indice). Viene fatta anche in automatico prima di salvare.": "Checks that the file is built correctly (package, pages, links, table of contents). It also runs automatically before saving.",
+    "Verifica il file": "Check the file",
+    "Problemi: {0}, avvisi: {1}.": "Problems: {0}, warnings: {1}.",
+    "Nessun problema trovato: il file dovrebbe aprirsi senza difficoltà.": "No problems found: the file should open without trouble.",
+    "Verifica semplificata: non sostituisce EPUBCheck.": "Simplified check: it does not replace EPUBCheck.",
+    "Il file che stai per salvare ha {0} nuovi problemi che potrebbero impedirne l'apertura su alcuni lettori ({1}). Salvarlo comunque?": "The file you are about to save has {0} new problems that could stop it opening on some readers ({1}). Save it anyway?",
+    "Salvataggio annullato. Controlla «Verifica di validità».": "Save cancelled. See «File validity check».",
+    "verifica: {0} segnalazioni": "check: {0} notices",
+    "verifica: nessun problema": "check: no problems",
+    "File «mimetype» non valido": "Invalid «mimetype» file",
+    "Il file mimetype deve essere il primo del pacchetto e contenere esattamente application/epub+zip.": "The mimetype file must be the first in the package and contain exactly application/epub+zip.",
+    "Contenitore del libro non valido": "Invalid book container",
+    "Manca META-INF/container.xml o non indica un pacchetto esistente.": "META-INF/container.xml is missing or does not point to an existing package.",
+    "Pacchetto non leggibile": "Unreadable package",
+    "Il file OPF non è un XML ben formato o manca una sezione obbligatoria (metadata, manifest, spine).": "The OPF file is not well-formed XML or a required section is missing (metadata, manifest, spine).",
+    "Versione EPUB non indicata": "EPUB version not stated",
+    "Il pacchetto non dichiara se è EPUB 2 o 3.": "The package does not say whether it is EPUB 2 or 3.",
+    "Titolo mancante": "Title missing",
+    "Il pacchetto non contiene dc:title.": "The package has no dc:title.",
+    "Identificatore mancante": "Identifier missing",
+    "Il pacchetto non contiene dc:identifier.": "The package has no dc:identifier.",
+    "Lingua mancante": "Language missing",
+    "Il pacchetto non contiene dc:language.": "The package has no dc:language.",
+    "Identificatore unico non valido": "Invalid unique identifier",
+    "L'attributo unique-identifier non punta a un identificatore esistente.": "The unique-identifier attribute does not point to an existing identifier.",
+    "Data di modifica mancante": "Modification date missing",
+    "Gli EPUB 3 devono avere la data di modifica (dcterms:modified).": "EPUB 3 books must have a modification date (dcterms:modified).",
+    "Data di modifica in formato errato": "Modification date in wrong format",
+    "Il formato corretto è AAAA-MM-GGThh:mm:ssZ.": "The correct format is YYYY-MM-DDThh:mm:ssZ.",
+    "Voci del manifest incomplete": "Incomplete manifest entries",
+    "Mancano id, href o tipo di file.": "An id, href or file type is missing.",
+    "Identificatori duplicati nel manifest": "Duplicate identifiers in the manifest",
+    "Due file dichiarati hanno lo stesso id.": "Two declared files share the same id.",
+    "File dichiarati ma assenti": "Declared files that are missing",
+    "Il pacchetto elenca file che non esistono nel libro.": "The package lists files that do not exist in the book.",
+    "File non dichiarati": "Undeclared files",
+    "Questi file sono nel libro ma non nel manifest: alcuni lettori li ignorano.": "These files are in the book but not in the manifest: some readers ignore them.",
+    "Tipo di file incoerente": "Inconsistent file type",
+    "Il tipo dichiarato non corrisponde all'estensione del file.": "The declared type does not match the file extension.",
+    "Percorsi con spazi non codificati": "Paths with unencoded spaces",
+    "I percorsi nel pacchetto dovrebbero scrivere gli spazi come %20.": "Paths in the package should write spaces as %20.",
+    "Nomi di file uguali a meno delle maiuscole": "File names differing only by case",
+    "Su alcuni sistemi questi file si sovrascrivono.": "On some systems these files overwrite each other.",
+    "Ordine di lettura vuoto": "Empty reading order",
+    "Il libro non ha nessuna pagina da leggere.": "The book has no pages to read.",
+    "Ordine di lettura con riferimenti inesistenti": "Reading order with missing references",
+    "Alcune pagine indicate non sono nel manifest.": "Some listed pages are not in the manifest.",
+    "Pagine di lettura non XHTML": "Reading pages that are not XHTML",
+    "Alcune pagine dell'ordine di lettura non sono XHTML e non hanno un'alternativa.": "Some pages in the reading order are not XHTML and have no fallback.",
+    "Indice NCX mancante": "NCX table of contents missing",
+    "Gli EPUB 2 richiedono un indice NCX collegato all'ordine di lettura.": "EPUB 2 books require an NCX table of contents linked to the reading order.",
+    "Indice di navigazione mancante": "Navigation table of contents missing",
+    "Gli EPUB 3 richiedono un documento «nav» con un indice.": "EPUB 3 books require a \"nav\" document with a table of contents.",
+    "Più documenti di navigazione": "More than one navigation document",
+    "Deve essercene uno solo.": "There must be only one.",
+    "Identificatore dell'indice diverso": "Table of contents identifier differs",
+    "L'identificatore dell'indice NCX non coincide con quello del libro.": "The NCX identifier does not match the book's identifier.",
+    "Ordine delle voci dell'indice duplicato": "Duplicate table of contents order",
+    "Alcune voci dell'indice hanno lo stesso numero d'ordine.": "Some table of contents entries have the same order number.",
+    "Voci dell'indice che puntano a file inesistenti": "Table of contents entries pointing to missing files",
+    "Alcune voci dell'indice non portano a nessuna pagina.": "Some table of contents entries lead nowhere.",
+    "Pagine non ben formate": "Malformed pages",
+    "Queste pagine hanno errori XML (ad esempio &nbsp; o tag non chiusi): alcuni lettori non le aprono.": "These pages have XML errors (for example &nbsp; or unclosed tags): some readers will not open them.",
+    "Pagine senza elemento html XHTML": "Pages without an XHTML html element",
+    "La pagina non è un documento XHTML valido.": "The page is not a valid XHTML document.",
+    "Pagine con titolo vuoto": "Pages with an empty title",
+    "Il titolo della pagina (title) è vuoto.": "The page title (title) is empty.",
+    "Identificatori duplicati nelle pagine": "Duplicate identifiers in pages",
+    "Nella stessa pagina ci sono elementi con lo stesso id.": "The same page has elements with the same id.",
+    "Collegamenti a file inesistenti": "Links to missing files",
+    "Alcuni collegamenti portano a file che non sono nel libro.": "Some links lead to files that are not in the book.",
+    "Immagini mancanti": "Missing images",
+    "Alcune pagine usano immagini che non sono nel libro.": "Some pages use images that are not in the book.",
+    "Collegamenti interni a punti inesistenti": "Internal links to missing targets",
+    "Alcuni collegamenti puntano a un punto della pagina che non esiste.": "Some links point to a spot in the page that does not exist.",
+    "Fogli di stile mancanti": "Missing style sheets",
+    "Alcune pagine usano fogli di stile che non sono nel libro.": "Some pages use style sheets that are not in the book.",
+    "Risorse mancanti nel CSS": "Missing resources in CSS",
+    "Un foglio di stile usa file (immagini o font) che non sono nel libro.": "A style sheet uses files (images or fonts) that are not in the book.",
+    "Risorse prese da internet": "Resources loaded from the internet",
+    "Immagini, stili o script caricati dalla rete non si vedono offline.": "Images, styles or scripts loaded from the web do not show offline.",
+    "Script nelle pagine": "Scripts in pages",
+    "Molti lettori non eseguono gli script.": "Many readers do not run scripts.",
+    "File vuoti": "Empty files",
+    "Alcuni file del libro non contengono nulla.": "Some book files contain nothing.",
     "Aprire il nuovo file? Le modifiche non salvate andranno perse.": "Open the new file? Unsaved changes will be lost.",
     "Impossibile aprire il file.": "Could not open the file.",
     "1 pagina è segnata «non lineare»: i lettori la saltano nella lettura continua.": "1 page is marked \"non-linear\": readers skip it in continuous reading.",
@@ -3328,6 +3551,222 @@ label.btn:not(.ghost){color:var(--md-on-primary)}
   $("sp-reset").addEventListener("click", function () { saveIgnored({}); say(T("Parole ignorate dimenticate. Rilancia il controllo.")); });
   $("r-count").addEventListener("click", countRules);
   $("stats-btn").addEventListener("click", stats);
+
+  // ---- Verifica di validità (controllo strutturale, in stile EPUBCheck semplificato) ----
+  var VMSG = {
+    "mimetype": ["err", "File «mimetype» non valido", "Il file mimetype deve essere il primo del pacchetto e contenere esattamente application/epub+zip."],
+    "container": ["err", "Contenitore del libro non valido", "Manca META-INF/container.xml o non indica un pacchetto esistente."],
+    "opf-xml": ["err", "Pacchetto non leggibile", "Il file OPF non è un XML ben formato o manca una sezione obbligatoria (metadata, manifest, spine)."],
+    "opf-version": ["warn", "Versione EPUB non indicata", "Il pacchetto non dichiara se è EPUB 2 o 3."],
+    "opf-title": ["err", "Titolo mancante", "Il pacchetto non contiene dc:title."],
+    "opf-id": ["err", "Identificatore mancante", "Il pacchetto non contiene dc:identifier."],
+    "opf-lang": ["err", "Lingua mancante", "Il pacchetto non contiene dc:language."],
+    "opf-uid": ["err", "Identificatore unico non valido", "L'attributo unique-identifier non punta a un identificatore esistente."],
+    "modified": ["err", "Data di modifica mancante", "Gli EPUB 3 devono avere la data di modifica (dcterms:modified)."],
+    "modified-fmt": ["warn", "Data di modifica in formato errato", "Il formato corretto è AAAA-MM-GGThh:mm:ssZ."],
+    "man-incomplete": ["err", "Voci del manifest incomplete", "Mancano id, href o tipo di file."],
+    "man-dup": ["err", "Identificatori duplicati nel manifest", "Due file dichiarati hanno lo stesso id."],
+    "man-missing": ["err", "File dichiarati ma assenti", "Il pacchetto elenca file che non esistono nel libro."],
+    "unlisted": ["warn", "File non dichiarati", "Questi file sono nel libro ma non nel manifest: alcuni lettori li ignorano."],
+    "mime-mismatch": ["warn", "Tipo di file incoerente", "Il tipo dichiarato non corrisponde all'estensione del file."],
+    "space-href": ["warn", "Percorsi con spazi non codificati", "I percorsi nel pacchetto dovrebbero scrivere gli spazi come %20."],
+    "case-dup": ["warn", "Nomi di file uguali a meno delle maiuscole", "Su alcuni sistemi questi file si sovrascrivono."],
+    "spine-empty": ["err", "Ordine di lettura vuoto", "Il libro non ha nessuna pagina da leggere."],
+    "spine-ref": ["err", "Ordine di lettura con riferimenti inesistenti", "Alcune pagine indicate non sono nel manifest."],
+    "spine-type": ["warn", "Pagine di lettura non XHTML", "Alcune pagine dell'ordine di lettura non sono XHTML e non hanno un'alternativa."],
+    "ncx-missing": ["err", "Indice NCX mancante", "Gli EPUB 2 richiedono un indice NCX collegato all'ordine di lettura."],
+    "nav-missing": ["err", "Indice di navigazione mancante", "Gli EPUB 3 richiedono un documento «nav» con un indice."],
+    "nav-multi": ["err", "Più documenti di navigazione", "Deve essercene uno solo."],
+    "ncx-uid": ["warn", "Identificatore dell'indice diverso", "L'identificatore dell'indice NCX non coincide con quello del libro."],
+    "ncx-order": ["warn", "Ordine delle voci dell'indice duplicato", "Alcune voci dell'indice hanno lo stesso numero d'ordine."],
+    "ncx-link": ["warn", "Voci dell'indice che puntano a file inesistenti", "Alcune voci dell'indice non portano a nessuna pagina."],
+    "xhtml-xml": ["err", "Pagine non ben formate", "Queste pagine hanno errori XML (ad esempio &nbsp; o tag non chiusi): alcuni lettori non le aprono."],
+    "xhtml-root": ["err", "Pagine senza elemento html XHTML", "La pagina non è un documento XHTML valido."],
+    "empty-title": ["warn", "Pagine con titolo vuoto", "Il titolo della pagina (title) è vuoto."],
+    "dup-id": ["err", "Identificatori duplicati nelle pagine", "Nella stessa pagina ci sono elementi con lo stesso id."],
+    "link-file": ["err", "Collegamenti a file inesistenti", "Alcuni collegamenti portano a file che non sono nel libro."],
+    "img-file": ["err", "Immagini mancanti", "Alcune pagine usano immagini che non sono nel libro."],
+    "link-frag": ["warn", "Collegamenti interni a punti inesistenti", "Alcuni collegamenti puntano a un punto della pagina che non esiste."],
+    "css-link": ["warn", "Fogli di stile mancanti", "Alcune pagine usano fogli di stile che non sono nel libro."],
+    "css-url": ["warn", "Risorse mancanti nel CSS", "Un foglio di stile usa file (immagini o font) che non sono nel libro."],
+    "remote": ["warn", "Risorse prese da internet", "Immagini, stili o script caricati dalla rete non si vedono offline."],
+    "script": ["warn", "Script nelle pagine", "Molti lettori non eseguono gli script."],
+    "zero": ["warn", "File vuoti", "Alcuni file del libro non contengono nulla."]
+  };
+  var VORD = { err: 0, warn: 1 };
+  async function validateEpub(z) {
+    var out = [], dp = new DOMParser(), XH = "http://www.w3.org/1999/xhtml", OPSNS = "http://www.idpf.org/2007/ops";
+    function add(code, file, extra) { out.push({ code: code, file: file || "", extra: extra || "" }); }
+    function xml(s) { var d = dp.parseFromString(s, "application/xml"); return d.getElementsByTagName("parsererror").length ? null : d; }
+    function ext(p) { var m = /\.([a-z0-9]+)$/i.exec(p); return m ? m[1].toLowerCase() : ""; }
+    function dir(p) { var i = p.lastIndexOf("/"); return i < 0 ? "" : p.slice(0, i + 1); }
+    function rel(base, href) {
+      href = (href || "").trim();
+      if (/^[a-z][a-z0-9+.\-]*:/i.test(href) || href.indexOf("//") === 0) return { ext: true };
+      try {
+        var u = new URL(href, "http://x/" + base);
+        return { path: decodeURIComponent(u.pathname.slice(1)), frag: decodeURIComponent(u.hash.slice(1)) };
+      } catch (e) { return { path: "", frag: "", bad: true }; }
+    }
+    var names = Object.keys(z.files), files = names.filter(function (n) { return !z.files[n].dir; });
+    // mimetype
+    var mt = z.file("mimetype");
+    if (!mt || files[0] !== "mimetype" || (await mt.async("string")) !== "application/epub+zip") add("mimetype", "mimetype");
+    // container e pacchetto
+    var cf = z.file("META-INF/container.xml"), opfPath = "", cd = cf ? xml(await cf.async("string")) : null;
+    var rf = cd && cd.getElementsByTagName("rootfile")[0];
+    if (rf) opfPath = rf.getAttribute("full-path") || "";
+    if (!opfPath || !z.file(opfPath)) { add("container", "META-INF/container.xml"); return out; }
+    var od = xml(await z.file(opfPath).async("string"));
+    var man = od && od.getElementsByTagNameNS(OPF, "manifest")[0], spn = od && od.getElementsByTagNameNS(OPF, "spine")[0], mdt = od && od.getElementsByTagNameNS(OPF, "metadata")[0];
+    if (!od || !man || !spn || !mdt) { add("opf-xml", opfPath); return out; }
+    var pkg = od.documentElement, ver = pkg.getAttribute("version") || "", v3 = /^3/.test(ver), base = dir(opfPath);
+    if (!/^[23]\./.test(ver)) add("opf-version", opfPath);
+    function dcAll(n) { return Array.prototype.slice.call(mdt.getElementsByTagNameNS(DC, n)); }
+    if (!dcAll("title").some(function (e) { return e.textContent.trim(); })) add("opf-title", opfPath);
+    var idEls = dcAll("identifier");
+    if (!idEls.length) add("opf-id", opfPath);
+    if (!dcAll("language").some(function (e) { return e.textContent.trim(); })) add("opf-lang", opfPath);
+    var uidAttr = pkg.getAttribute("unique-identifier"), uidEl = idEls.filter(function (e) { return e.getAttribute("id") === uidAttr; })[0];
+    if (idEls.length && (!uidAttr || !uidEl)) add("opf-uid", opfPath);
+    if (v3) {
+      var mods = Array.prototype.filter.call(mdt.getElementsByTagNameNS(OPF, "meta"), function (m) { return m.getAttribute("property") === "dcterms:modified"; });
+      if (!mods.length) add("modified", opfPath);
+      else if (!/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ$/.test(mods[0].textContent.trim())) add("modified-fmt", opfPath);
+    }
+    // manifest
+    var its = Array.prototype.slice.call(man.getElementsByTagNameNS(OPF, "item")), byId = {}, listed = {}, lower = {};
+    var MIME = { jpg: "image/jpeg", jpeg: "image/jpeg", png: "image/png", gif: "image/gif", svg: "image/svg+xml", webp: "image/webp", xhtml: "application/xhtml+xml", html: "application/xhtml+xml", css: "text/css", ncx: "application/x-dtbncx+xml" };
+    its.forEach(function (it) {
+      var id = it.getAttribute("id"), href = it.getAttribute("href"), ty = it.getAttribute("media-type");
+      if (!id || !href || !ty) { add("man-incomplete", href || id || ""); return; }
+      if (byId[id]) add("man-dup", href); byId[id] = it;
+      if (/ /.test(href)) add("space-href", href);
+      var r = rel(base, href); it._p = r.ext ? null : r.path;
+      if (it._p === null) return;
+      listed[it._p] = true;
+      if (!z.file(it._p)) add("man-missing", it._p);
+      var want = MIME[ext(it._p)];
+      if (want && want !== ty && !(want === "application/xhtml+xml" && ty === "text/html")) add("mime-mismatch", it._p, ty);
+    });
+    files.forEach(function (n) {
+      var k = n.toLowerCase(); if (lower[k] && lower[k] !== n) add("case-dup", n); lower[k] = n;
+      if (n === "mimetype" || n === opfPath || n.indexOf("META-INF/") === 0 || listed[n]) return;
+      add("unlisted", n);
+    });
+    // ordine di lettura
+    var refs = Array.prototype.slice.call(spn.getElementsByTagNameNS(OPF, "itemref"));
+    if (!refs.length) add("spine-empty", opfPath);
+    refs.forEach(function (r) {
+      var it = byId[r.getAttribute("idref")];
+      if (!it) { add("spine-ref", r.getAttribute("idref") || ""); return; }
+      var ty = it.getAttribute("media-type");
+      if (ty !== "application/xhtml+xml" && ty !== "image/svg+xml" && !it.getAttribute("fallback")) add("spine-type", it._p || "");
+    });
+    var navs = its.filter(function (i) { return /(^|\s)nav(\s|$)/.test(i.getAttribute("properties") || ""); }), navPaths = {};
+    navs.forEach(function (n) { if (n._p) navPaths[n._p] = true; });
+    var ncxIt = spn.getAttribute("toc") && byId[spn.getAttribute("toc")];
+    if (v3) { if (!navs.length) add("nav-missing", opfPath); else if (navs.length > 1) add("nav-multi", opfPath); }
+    else if (!ncxIt || !ncxIt._p || !z.file(ncxIt._p)) add("ncx-missing", opfPath);
+    // pagine XHTML
+    var ta = document.createElement("textarea"), ids = {}, links = [], pages = its.filter(function (i) { return i._p && i.getAttribute("media-type") === "application/xhtml+xml" && z.file(i._p); });
+    for (var p = 0; p < pages.length; p++) {
+      var path = pages[p]._p, txt = await z.file(path).async("string");
+      if (!txt.trim()) { add("zero", path); continue; }
+      if (/<!DOCTYPE/i.test(txt)) txt = txt.replace(/&([A-Za-z][A-Za-z0-9]*);/g, function (m, n) {
+        if (/^(amp|lt|gt|quot|apos)$/.test(n)) return m;
+        ta.innerHTML = m; var ch0 = ta.value; return ch0 && ch0 !== m ? "&#" + ch0.codePointAt(0) + ";" : m;
+      });
+      var d = xml(txt);
+      if (!d) { add("xhtml-xml", path); continue; }
+      var root = d.documentElement;
+      if (root.localName !== "html" || root.namespaceURI !== XH) { add("xhtml-root", path); continue; }
+      var ti = d.getElementsByTagName("title")[0];
+      if (!navPaths[path] && ti && !ti.textContent.trim()) add("empty-title", path);
+      var set = {}, all = d.getElementsByTagName("*"), dupDone = false, hasToc = false;
+      ids[path] = set;
+      for (var e = 0; e < all.length; e++) {
+        var el = all[e], nm = el.localName, idv = el.getAttribute("id");
+        if (idv) { if (set[idv] && !dupDone) { add("dup-id", path, idv); dupDone = true; } set[idv] = true; }
+        var ref = null, kind = "";
+        if (nm === "a") { ref = el.getAttribute("href"); kind = "a"; }
+        else if (nm === "img") { ref = el.getAttribute("src"); kind = "img"; }
+        else if (nm === "link" && /stylesheet/i.test(el.getAttribute("rel") || "")) { ref = el.getAttribute("href"); kind = "css"; }
+        else if (nm === "script") { add("script", path); ref = el.getAttribute("src"); kind = "script"; }
+        else if (nm === "source" || nm === "audio" || nm === "video") { ref = el.getAttribute("src"); kind = "media"; }
+        else if (nm === "image") { ref = el.getAttribute("href") || el.getAttributeNS("http://www.w3.org/1999/xlink", "href"); kind = "img"; }
+        if (ref) {
+          if (kind !== "a" && /^(https?:)?\/\//i.test(ref.trim())) add("remote", path, ref);
+          else links.push({ from: path, href: ref, kind: kind, nav: !!navPaths[path] });
+        }
+      }
+      if (navPaths[path]) {
+        hasToc = Array.prototype.some.call(d.getElementsByTagName("nav"), function (n) { return /(^|\s)toc(\s|$)/.test(n.getAttributeNS(OPSNS, "type") || n.getAttribute("epub:type") || ""); });
+        if (!hasToc) add("nav-missing", path, "toc");
+      }
+    }
+    links.forEach(function (l) {
+      var r = rel(dir(l.from), l.href);
+      if (r.ext || r.bad) return;
+      var tp = r.path || l.from;
+      if (!z.file(tp)) { add(l.kind === "img" ? "img-file" : l.kind === "css" ? "css-link" : "link-file", l.from, l.href); return; }
+      if (l.kind === "a" && r.frag && ids[tp] && r.frag.indexOf("epubcfi") !== 0 && !ids[tp][r.frag]) add("link-frag", l.from, l.href);
+    });
+    // CSS
+    var csss = its.filter(function (i) { return i._p && i.getAttribute("media-type") === "text/css" && z.file(i._p); });
+    for (var c = 0; c < csss.length; c++) {
+      var cp = csss[c]._p, css = (await z.file(cp).async("string")).replace(/\/\*[\s\S]*?\*\//g, ""), mm, re = /url\(\s*(['"]?)([^)'"]+)\1\s*\)|@import\s+(['"])([^'"]+)\3/g, bad = false;
+      while ((mm = re.exec(css))) {
+        var u = (mm[2] || mm[4] || "").trim(), r2 = rel(dir(cp), u);
+        if (!u || r2.ext || r2.bad || /^data:/i.test(u)) continue;
+        if (!z.file(r2.path)) { add("css-url", cp, u); bad = true; break; }
+      }
+    }
+    // indice NCX
+    if (ncxIt && ncxIt._p && z.file(ncxIt._p)) {
+      var nd = xml(await z.file(ncxIt._p).async("string"));
+      if (nd) {
+        var uidm = Array.prototype.filter.call(nd.getElementsByTagName("meta"), function (m) { return m.getAttribute("name") === "dtb:uid"; })[0];
+        if (uidm && uidEl && uidm.getAttribute("content").trim() !== uidEl.textContent.trim()) add("ncx-uid", ncxIt._p);
+        var seen = {}, dupO = false, badL = false;
+        Array.prototype.forEach.call(nd.getElementsByTagName("navPoint"), function (np) {
+          var po = np.getAttribute("playOrder"), ct = np.getElementsByTagName("content")[0], src = ct && ct.getAttribute("src");
+          if (po) { if (seen[po] && !dupO) { add("ncx-order", ncxIt._p); dupO = true; } seen[po] = true; }
+          var r3 = src ? rel(dir(ncxIt._p), src) : null;
+          if (r3 && !r3.ext && !r3.bad && !z.file(r3.path) && !badL) { add("ncx-link", ncxIt._p, src); badL = true; }
+        });
+      }
+    }
+    return out;
+  }
+  function vSig(x) { return x.code + "|" + x.file + "|" + x.extra; }
+  function renderVal(box, res) {
+    box.innerHTML = "";
+    var groups = {}, order = [];
+    res.forEach(function (x) { if (!groups[x.code]) { groups[x.code] = []; order.push(x.code); } groups[x.code].push(x); });
+    order.sort(function (a, b) { return VORD[VMSG[a][0]] - VORD[VMSG[b][0]]; });
+    var ne = res.filter(function (x) { return VMSG[x.code][0] === "err"; }).length, nw = res.length - ne;
+    var sum = document.createElement("div"); sum.className = "small"; sum.style.margin = "10px 0 0";
+    sum.textContent = res.length ? TF("Problemi: {0}, avvisi: {1}.", ne, nw) : T("Nessun problema trovato: il file dovrebbe aprirsi senza difficoltà.");
+    box.appendChild(sum);
+    order.forEach(function (code) {
+      var m = VMSG[code], g = groups[code], row = document.createElement("div"); row.className = "sprow a-" + m[0];
+      var h = document.createElement("strong"), tg = document.createElement("span"); tg.className = "tag"; tg.textContent = m[0] === "err" ? T("Problema") : T("Avviso");
+      h.appendChild(tg); h.appendChild(document.createTextNode(T(m[1]) + (g.length > 1 ? " (" + g.length + ")" : ""))); row.appendChild(h);
+      var dt = document.createElement("div"); dt.className = "small"; dt.textContent = T(m[2]); row.appendChild(dt);
+      var fl = []; g.forEach(function (x) { var s = (x.file ? x.file.split("/").pop() : "") + (x.extra && x.extra !== x.file && x.extra.length < 60 ? " → " + x.extra : ""); if (s && fl.indexOf(s) < 0) fl.push(s); });
+      if (fl.length) { var ex = document.createElement("div"); ex.className = "small ex"; ex.textContent = fl.slice(0, 5).join(", ") + (fl.length > 5 ? " …" : ""); row.appendChild(ex); }
+      box.appendChild(row);
+    });
+    var nt = document.createElement("div"); nt.className = "small"; nt.style.marginTop = "10px"; nt.textContent = T("Verifica semplificata: non sostituisce EPUBCheck.");
+    box.appendChild(nt);
+  }
+  var origVal = null;
+  async function validateNow() {
+    var box = $("va-rep"); box.innerHTML = ""; var msg = document.createElement("div"); msg.className = "small"; msg.textContent = T("Analizzo…"); box.appendChild(msg);
+    try { renderVal(box, await validateEpub(zip)); } catch (e) { msg.textContent = T("Controllo non riuscito."); }
+  }
+  $("va-run").addEventListener("click", validateNow);
   $("check").addEventListener("click", checkBook);
   $("toc-gen").addEventListener("click", genToc);
   var ow = document.querySelector(".optwrap");

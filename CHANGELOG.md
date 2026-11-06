@@ -9,6 +9,13 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ## Italiano
 
+### [1.1.0] – 2026-11-06
+
+#### Aggiunto
+- Verifica di validità del file EPUB: pacchetto, manifest, ordine di lettura, pagine XML ben formate, identificatori duplicati, collegamenti e immagini mancanti, indice (NCX o nav), fogli di stile, risorse remote
+- Controllo automatico sul file generato prima di salvare: se compaiono nuovi problemi che potrebbero impedire l'apertura su alcuni lettori, l'app chiede conferma
+- Il risultato della verifica compare nel messaggio di salvataggio
+
 ### [1.0.1] – 2026-11-05
 
 #### Aggiunto
@@ -58,6 +65,13 @@ Prima versione stabile. Editor EPUB gratuito che funziona nel browser e anche of
 ---
 
 ## English
+
+### [1.1.0] – 2026-11-06
+
+#### Added
+- EPUB file validity check: package, manifest, reading order, well-formed XML pages, duplicate identifiers, missing links and images, table of contents (NCX or nav), style sheets, remote resources
+- Automatic check on the generated file before saving: if new problems appear that could stop it opening on some readers, the app asks for confirmation
+- The check result appears in the save message
 
 ### [1.0.1] – 2026-11-05
 

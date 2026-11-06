@@ -2,7 +2,7 @@
 // La versione della cache viene scritta da build.sh a ogni pubblicazione su Cloudflare
 // (impronta dei file dell'app). Se build.sh non gira, vale la versione manuale qui sotto.
 var BUILD = "__BUILD__";
-var C = "colophon-" + (BUILD.charAt(0) === "_" ? "v17" : BUILD);
+var C = "colophon-" + (BUILD.charAt(0) === "_" ? "v18" : BUILD);
 var DATA = "colophon-data-1"; // correttore e dizionari: cambiano di rado, restano tra una versione e l'altra
 
 var CORE = ["./", "index.html", "manifest.webmanifest", "icon.svg", "icon-192.png", "icon-512.png",

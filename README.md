@@ -105,6 +105,7 @@ Un EPUB è un archivio ZIP di pagine XHTML, immagini e un file di descrizione (O
 - **Controllo dei metadati:** legge il libro e propone correzioni a titolo, autori, lingua e serie (nomi di file usati come titolo, maiuscolo, «Cognome, Nome», più autori nello stesso campo, lingua rilevata dal testo); scegli tu cosa applicare
 - **Note a piè di pagina:** controlla i riferimenti, aggiunge i link di ritorno, rinumera le note, toglie i collegamenti rotti e crea note a comparsa per i lettori EPUB 3
 - **Controllo di accessibilità:** un rapporto con problemi, avvisi e suggerimenti su descrizioni delle immagini, lingua, titoli, tabelle, collegamenti, contrasto dei colori, indice e metadati di accessibilità, con l'indicazione di come correggere
+- **Verifica di validità:** controlla che il file sia costruito correttamente (pacchetto, manifest, ordine di lettura, pagine XML, collegamenti, immagini, indice) e, prima di salvare, avvisa se le modifiche introducono nuovi problemi che potrebbero impedire l'apertura su alcuni lettori. È una verifica semplificata, non sostituisce EPUBCheck
 - **Aggiornamenti:** quando pubblichi una nuova versione, l'app mostra un avviso "Aggiorna" senza dover ricaricare più volte.
 - **Apri i file dal file manager:** installando Colophon su Chromebook o computer, un doppio clic su un `.epub` lo apre direttamente nell'app (non disponibile su Android)
 
@@ -192,6 +193,7 @@ An EPUB is a ZIP archive of XHTML pages, images and a description file (OPF). Co
 - **Metadata check:** reads the book and suggests fixes for title, authors, language and series (file names used as titles, all caps, “Surname, Name”, several authors in one field, language detected from the text); you choose what to apply
 - **Footnotes:** checks references, adds links back, renumbers notes, removes broken links and creates pop-up notes for EPUB 3 readers
 - **Accessibility check:** a report with problems, warnings and suggestions on image descriptions, language, headings, tables, links, color contrast, table of contents and accessibility metadata, with hints on how to fix them
+- **File validity check:** checks that the file is built correctly (package, manifest, reading order, XML pages, links, images, table of contents) and, before saving, warns you if your changes introduce new problems that could stop it opening on some readers. It is a simplified check and does not replace EPUBCheck
 - **Updates:** when a new version is published, the app shows an "Update" notice, so no repeated reloads are needed.
 - **Open files from your file manager:** once Colophon is installed on a Chromebook or computer, double-clicking an `.epub` opens it straight in the app (not available on Android)
 
