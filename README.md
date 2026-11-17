@@ -112,6 +112,7 @@ Un EPUB è un archivio ZIP di pagine XHTML, immagini e un file di descrizione (O
 **Interfaccia**
 - **Italiano e inglese:** al primo avvio propone la lingua del dispositivo; si cambia in ogni momento con i pulsanti IT / EN
 - **Riepilogo prima del salvataggio:** ogni modifica è elencata e si può escludere singolarmente
+- **Annulla tutto:** un tocco riporta il libro e le opzioni a come erano all'apertura
 - Interfaccia in stile **Material 3 Expressive**: forme morbide e animate, colori tonali generati da un unico colore di base, interruttori, pulsanti a pillola e icone Google Material Symbols incorporate (funzionano offline)
 - Tema chiaro e scuro automatico, adatta a telefono, tablet e computer
 - Installabile e utilizzabile offline (tranne la ricerca online)
@@ -200,6 +201,7 @@ An EPUB is a ZIP archive of XHTML pages, images and a description file (OPF). Co
 **Interface**
 - **Italian and English:** on first launch it proposes your device's language; switch at any time with the IT / EN buttons
 - **Summary before saving:** every change is listed and can be excluded individually
+- **Undo all:** one tap takes the book and the options back to how they were when opened
 - **Material 3 Expressive** interface: soft animated shapes, tonal colors generated from a single seed color, switches, pill buttons and built-in Google Material Symbols icons (work offline)
 - Automatic light and dark theme, designed for phones, tablets and desktops
 - Installable and usable offline (except online lookup)

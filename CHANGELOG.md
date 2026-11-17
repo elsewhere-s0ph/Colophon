@@ -9,6 +9,14 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ## Italiano
 
+### [1.2.0] – 2026-11-17
+
+#### Aggiunto
+- «Annulla tutto»: un pulsante accanto a «Salva EPUB» riporta il libro com'era all'apertura (metadati, copertina, capitoli, indice, testo) e le opzioni ai valori iniziali, dopo una conferma
+
+#### Modificato
+- Nella barra di salvataggio «Annulla tutto» e «Apri un altro file» sono pulsanti a icona, per lasciare spazio a «Salva EPUB» sugli schermi stretti
+
 ### [1.1.1] – 2026-11-06
 
 #### Aggiunto
@@ -78,6 +86,14 @@ Prima versione stabile. Editor EPUB gratuito che funziona nel browser e anche of
 ---
 
 ## English
+
+### [1.2.0] – 2026-11-17
+
+#### Added
+- "Undo all": a button next to "Save EPUB" takes the book back to how it was when opened (metadata, cover, chapters, table of contents, text) and resets the options to their defaults, after a confirmation
+
+#### Changed
+- In the save bar "Undo all" and "Open another file" are icon buttons, leaving room for "Save EPUB" on narrow screens
 
 ### [1.1.1] – 2026-11-06
 
