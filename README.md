@@ -12,7 +12,7 @@
 <p align="center">
   <a href="https://colophon-home.pages.dev"><b>colophon-home.pages.dev</b></a> · <a href="https://colophon-editor.pages.dev">colophon-editor.pages.dev</a><br>
   <sub>Sito · Website &nbsp;|&nbsp; App</sub><br>
-  <a href="https://github.com/elsewhere-s0ph">GitHub · elsewhere-s0ph</a><br>
+  <a href="https://github.com/elsewhere-s0ph/Colophon">GitHub · elsewhere-s0ph/Colophon</a><br>
   <a href="#italiano">Italiano</a> · <a href="#english">English</a>
 </p>
 

@@ -2,6 +2,8 @@
 
 [Italiano](#italiano) · [English](#english)
 
+[Release / Releases](https://github.com/elsewhere-s0ph/Colophon/releases)
+
 Il formato segue [Keep a Changelog](https://keepachangelog.com/it/1.1.0/) e il versionamento segue [SemVer](https://semver.org/lang/it/).
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and versioning follows [SemVer](https://semver.org/).
 
