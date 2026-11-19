@@ -11,6 +11,11 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 ## Italiano
 
+### [1.2.1] – 2026-11-19
+
+#### Modificato
+- Titolo, descrizione e anteprima di condivisione dell'app ora invitano ad aprire e modificare un EPUB, per distinguerli da quelli della landing
+
 ### [1.2.0] – 2026-11-17
 
 #### Aggiunto
@@ -88,6 +93,11 @@ Prima versione stabile. Editor EPUB gratuito che funziona nel browser e anche of
 ---
 
 ## English
+
+### [1.2.1] – 2026-11-19
+
+#### Changed
+- The app's title, description and sharing preview now invite you to open and edit an EPUB, to tell them apart from the landing page's
 
 ### [1.2.0] – 2026-11-17
 
